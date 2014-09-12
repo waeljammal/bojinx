@@ -11,3 +11,8 @@ Pluin Notes
 * Command Plugin is not yet ready for usage, I am re-writing the existing command plugin to provide command mapping features.
 * Command Plugin tests will fail but all other tests should pass.
 * Refactoring tests with better naming conventions (ie. command_execute_returns_success) instead of using description as it is now.
+
+Build Notes
+========================
+
+* Maven is currently broken due to my server crashing the repository was lost so some dependencies fail, I am working on this.
