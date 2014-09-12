@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testrun name="" >
+<testsuite  name="Default Test Suite" project="Navigation">
+<testsuite name="com.adobe.cairngorm.navigation.core:DestinationStateController_EnterInterceptorTest" type="testsuiteclass"/>
+</testsuite>
+</testrun>

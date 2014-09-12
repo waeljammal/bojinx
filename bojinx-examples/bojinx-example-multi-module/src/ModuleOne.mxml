@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Module xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		  xmlns:s="library://ns.adobe.com/flex/spark" 
+		  xmlns:mx="library://ns.adobe.com/flex/mx" width="100%" height="100%" 
+		  xmlns:bojinx="http://www.rsnewmedia.co.uk/bojinx/" creationComplete="module1_creationCompleteHandler(event)">
+	
+	<fx:Script>
+		<![CDATA[
+			import com.bojinx.api.message.IInterceptedMessage;
+			import com.bojinx.message.TestMessageOne;
+			import com.bojinx.system.context.event.ContextEvent;
+			import com.bojinx.test.TestObjectThree;
+			
+			import flash.utils.setTimeout;
+			
+			import mx.events.FlexEvent;
+			
+			public var wired:String = "yes";
+			
+			[Bindable]
+			[Inject]
+			public var test:TestObjectThree;
+			
+			[Ready]
+			public final function onRady():void
+			{
+				trace("ModuleOne Ready");
+			}
+			
+			[Message(name="filterOne")]
+			public function handleFilterOne(m:TestMessageOne):void
+			{
+				output.text += "\nReceived TestMessage in handleFilterOne [Index]: " + m.index + " [Priority]: 0"; 
+				m.index++;
+			}
+			
+			[MessageInterceptor(name="filterOne")]
+			public function interceptAllFilterOne(m:*, i:IInterceptedMessage):void
+			{
+				output.text += "\nIntercepted * in interceptAllFilterOne [Index]: " + m.index + " [Priority]: 0"; 
+				m.index++;
+				setTimeout(i.resume, 1500);
+			}
+			
+			protected function onContextLoaded(event:ContextEvent):void
+			{
+				
+			}
+			
+			protected function unloadModule(event:MouseEvent):void
+			{
+				moduleContext.removeEventListener(ContextEvent.CONTEXT_LOADED, onContextLoaded);
+				
+				button.setFocus();
+				subModule.unloadModule();
+				subModule.removeAllElements();
+				subModule.applicationDomain = null;
+				
+				grp.removeElement(subModule);
+				subModule = null;
+			}
+			
+			protected function module1_creationCompleteHandler(event:FlexEvent):void
+			{
+				moduleContext.load();
+			}
+			
+		]]>
+	</fx:Script>
+	
+	<fx:Declarations>
+		<bojinx:ApplicationContext id="moduleContext" autoLoad="true" contextLoaded="onContextLoaded(event)">
+			<bojinx:EmbeddedConfig source="{ModuleContext}" />
+			<bojinx:ViewSettings autoReleaseComponents="true" autoReleaseContexts="true" inheritFromParentContext="true" />
+			<bojinx:displayProcessor>
+				<bojinx:DisplayObjectProcessor>
+					<bojinx:PropertyValueBasedObjectSelector propertyName="wired" />
+				</bojinx:DisplayObjectProcessor>
+			</bojinx:displayProcessor>
+		</bojinx:ApplicationContext>
+	</fx:Declarations>
+	
+	<s:Rect percentHeight="100" percentWidth="100">
+		<s:fill>
+			<s:SolidColor color="0XCCCCCC" />
+		</s:fill> 
+	</s:Rect>
+	
+	<s:Button label="Unload Module B" id="button" left="10" top="10" click="unloadModule(event)" />
+	<s:Label top="15" horizontalCenter="0" text="Module A" />
+	<s:TextInput top="10" right="10" text="Injected {test.data.value}" editable="true" width="150" />
+	
+	<s:VGroup top="40" left="10" right="10" bottom="10" id="grp">
+		<s:TextArea width="100%" height="50" id="output" text="Module A Output"/>
+		<s:ModuleLoader width="100%" height="100%" id="subModule" url="ModuleB.swf"
+						applicationDomain="{new ApplicationDomain(ApplicationDomain.currentDomain)}" />
+	</s:VGroup>
+	
+	<!--<s:Group top="100" left="10" right="10" bottom="10">
+		<s:DataGrid visible="true" />
+		<s:DataGrid visible="true" />
+		<s:DataGrid visible="true" />
+		<s:DataGrid visible="true" />
+		<s:DataGrid visible="true" />
+		<s:DataGrid visible="true" />
+		<s:DataGrid visible="true" />
+		<s:DataGrid visible="true" />
+		<s:DataGrid visible="true" />
+		<s:DataGrid visible="true" />
+		<s:DataGrid visible="true" />
+		<s:DataGrid visible="true" />
+		<s:DataGrid visible="true" />
+		<s:DataGrid visible="true" />
+		<s:DataGrid visible="true" />
+		<s:DataGrid visible="true" />
+		<s:DataGrid visible="true" />
+		<s:DataGrid visible="true" />
+		<s:DataGrid visible="true" />
+		<s:DataGrid visible="true" />
+		<s:DataGrid visible="true" />
+		<s:DataGrid visible="true" />
+		<s:DataGrid visible="true" />
+		<s:DataGrid visible="true" />
+		<s:DataGrid visible="true" />
+		<s:DataGrid visible="true" />
+		<s:DataGrid visible="true" />
+		<s:DataGrid visible="true" />
+		<s:DataGrid visible="true" />
+		<s:DataGrid visible="true" />
+		<s:DataGrid visible="true" />
+		<s:DataGrid visible="true" />
+		<s:DataGrid visible="true" />
+		<s:DataGrid visible="true" />
+		<s:DataGrid visible="true" />
+		<s:DataGrid visible="true" />
+		<s:DataGrid visible="true" />
+		<s:DataGrid visible="true" />
+		<s:DataGrid visible="true" />
+		<s:DataGrid visible="true" />
+		<s:DataGrid visible="true" />
+		<s:DataGrid visible="true" />
+		<s:DataGrid visible="true" />
+		<s:DataGrid visible="true" />
+		<s:DataGrid visible="true" />
+		<s:DataGrid visible="true" />
+		<s:DataGrid visible="true" />
+		<s:DataGrid visible="true" />
+		<s:DataGrid visible="true" />
+		<s:DataGrid visible="true" />
+		<s:DataGrid visible="true" />
+		<s:DataGrid visible="true" />
+		<s:DataGrid visible="true" />
+		<s:DataGrid visible="true" />
+		<s:DataGrid visible="true" />
+		<s:DataGrid visible="true" />
+		<s:DataGrid visible="true" />
+		<s:DataGrid visible="true" />
+		<s:DataGrid visible="true" />
+		<s:DataGrid visible="true" />
+		<s:DataGrid visible="true" />
+		<s:DataGrid visible="true" />
+		<s:DataGrid visible="true" />
+		<s:DataGrid visible="true" />
+		<s:DataGrid visible="true" />
+	</s:Group>-->
+	
+	
+</s:Module>

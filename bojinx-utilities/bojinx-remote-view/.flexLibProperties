@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<flexLibProperties includeAllClasses="true" useMultiPlatformConfig="false" version="3">
+  <includeClasses>
+    <classEntry path="com.bojinx.ui.RemoteView"/>
+    <classEntry path="com.bojinx.ui.loader.ViewLoader"/>
+    <classEntry path="com.bojinx.ui.loader.ClassLoader"/>
+    <classEntry path="com.bojinx.ui.event.ClassLoaderEvent"/>
+    <classEntry path="com.bojinx.ui.loader.ModuleLoader"/>
+  </includeClasses>
+  <includeResources/>
+  <namespaceManifests/>
+</flexLibProperties>

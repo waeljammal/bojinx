@@ -1,0 +1,6 @@
+<?xml version="1.0"?><componentPackage>
+  <component id="CommandProcessor" class="com.bojinx.command.CommandProcessor"/>
+  <component id="Command" class="com.bojinx.command.config.factory.mxml.Command"/>
+  <component id="CommandFlow" class="com.bojinx.command.config.factory.mxml.CommandFlow"/>
+  <component id="CommandMap" class="com.bojinx.command.config.factory.mxml.CommandMap"/>
+</componentPackage>

@@ -1,0 +1,84 @@
+<?xml version="1.0"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+	<parent>
+		<groupId>com.bojinx</groupId>
+		<artifactId>bojinx-as3-framework</artifactId>
+		<version>1.0.1</version>
+		<relativePath>../pom.xml</relativePath>
+	</parent>
+
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.bojinx</groupId>
+	<artifactId>release</artifactId>
+	<version>1.0.1</version>
+	<name>Bojinx Release</name>
+	<description>Release to FTP Package.</description>
+
+	<!-- Console -->
+	<build>
+		<sourceDirectory>src</sourceDirectory>
+		<plugins>
+			<!-- Site -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-site-plugin</artifactId>
+				<version>3.0</version>
+				<inherited>true</inherited>
+				<configuration>
+					<outputEncoding>utf-8</outputEncoding>
+					<siteDirectory>${basedir}/../src/site</siteDirectory>
+					<outputDirectory>../target/site/${project.artifactId}</outputDirectory>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>wagon-maven-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>upload-zip</id>
+						<phase>deploy</phase>
+						<goals>
+							<goal>upload</goal>
+						</goals>
+						<configuration>
+							<fromDir>../target/downloads</fromDir>
+							<includes>*</includes>
+							<url>ftp://${usr}:${pass}@ftp.bojinx.co.uk/httpdocs/releases/bojinx</url>
+							<toDir>${output.version}/downloads</toDir>
+						</configuration>
+					</execution>
+					<execution>
+						<id>upload-site</id>
+						<phase>deploy</phase>
+						<goals>
+							<goal>upload</goal>
+						</goals>
+						<configuration>
+							<fromDir>../target/site</fromDir>
+							<includes>**/*</includes>
+							<url>ftp://${usr}:${pass}@ftp.bojinx.co.uk/httpdocs/releases/bojinx</url>
+							<toDir>${output.version}/site</toDir>
+						</configuration>
+					</execution>
+					<execution>
+						<id>upload-examples</id>
+						<phase>deploy</phase>
+						<goals>
+							<goal>upload</goal>
+						</goals>
+						<configuration>
+							<fromDir>../target/examples</fromDir>
+							<includes>**/*</includes>
+							<url>ftp://${usr}:${pass}@ftp.bojinx.co.uk/httpdocs/releases/bojinx</url>
+							<toDir>${output.version}/examples</toDir>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>

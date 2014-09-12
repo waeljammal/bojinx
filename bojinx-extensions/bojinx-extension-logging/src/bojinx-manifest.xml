@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<componentPackage>
+
+	<component id="LoggingExtension" class="com.bojinx.logging.LoggingExtension" />
+	<component id="TraceAppender" class="org.spicefactory.lib.flash.logging.impl.TraceAppender" />
+	<component id="BojinxDebugAppender" class="com.bojinx.logging.appenders.BojinxDebugAppender" />
+
+</componentPackage>

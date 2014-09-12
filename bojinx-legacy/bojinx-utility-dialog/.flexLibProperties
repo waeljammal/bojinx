@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<flexLibProperties includeAllClasses="true" useMultiPlatformConfig="false" version="3">
+  <includeClasses>
+    <classEntry path="com.bojinx.dialog.DialogFactory"/>
+    <classEntry path="com.bojinx.dialog.IDialog"/>
+    <classEntry path="com.bojinx.dialog.wrapper.Dialog"/>
+    <classEntry path="com.bojinx.dialog.wrapper.DialogData"/>
+    <classEntry path="com.bojinx.dialog.effects.DialogEffects"/>
+    <classEntry path="com.bojinx.dialog.wrapper.DialogSettings"/>
+    <classEntry path="com.bojinx.dialog.ui.DefaultDialogWindow"/>
+    <classEntry path="com.bojinx.dialog.ui.DefaultFlexDialogWindow"/>
+    <classEntry path="com.bojinx.dialog.IDialogAware"/>
+    <classEntry path="com.bojinx.dialog.DialogEvent"/>
+    <classEntry path="com.bojinx.dialog.ModalManager"/>
+    <classEntry path="com.bojinx.dialog.util.TranslateUtil"/>
+    <classEntry path="com.bojinx.dialog.ui.BubbleDialogWindow"/>
+    <classEntry path="com.bojinx.dialog.util.Bubble"/>
+    <classEntry path="com.bojinx.dialog.util.FocusUtil"/>
+  </includeClasses>
+  <includeResources/>
+  <namespaceManifests/>
+</flexLibProperties>

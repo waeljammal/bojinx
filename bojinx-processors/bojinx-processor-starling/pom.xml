@@ -1,0 +1,128 @@
+<?xml version="1.0"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>com.bojinx</groupId>
+		<artifactId>bojinx-processors</artifactId>
+		<version>2.0.0</version>
+		<relativePath>../pom.xml</relativePath>
+	</parent>
+
+	<groupId>com.bojinx</groupId>
+	<artifactId>bojinx-processor-starling</artifactId>
+	<version>2.0.0</version>
+	<name>Bojinx Starling Display Processor</name>
+	<packaging>swc</packaging>
+
+	<!-- Build -->
+	<build>
+		<sourceDirectory>src</sourceDirectory>
+		
+		<resources>
+			<resource>
+				<directory>${basedir}/target/site/</directory>
+			</resource>
+			<resource>
+				<directory>src</directory>
+			</resource>
+		</resources>
+
+		<plugins>
+			<!-- Resources -->
+			<plugin>
+				<artifactId>maven-resources-plugin</artifactId>
+				<version>2.5</version>
+				<executions>
+					<execution>
+						<id>copy-resources</id>
+						<phase>prepare-package</phase>
+						<goals>
+							<goal>copy-resources</goal>
+						</goals>
+						<configuration>
+							<overwrite>true</overwrite>
+							<outputDirectory>../../target/site/bojinx-processors/${project.artifactId}</outputDirectory>
+							<resources>
+								<resource>
+									<directory>${basedir}/target/site/</directory>
+								</resource>
+							</resources>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			
+			<plugin>
+				<groupId>com.bojinx</groupId>
+				<artifactId>manifest</artifactId>
+				<dependencies>
+					<dependency>
+						<groupId>com.bojinx</groupId>
+						<artifactId>manifest</artifactId>
+						<version>1.0.1-RELEASE</version>
+						<type>pom</type>
+					</dependency>
+				</dependencies>
+				<executions>
+					<execution>
+						<goals>
+							<goal>manifest</goal>
+						</goals>
+						<configuration>
+							<outputFile>src/bojinx-manifest.xml</outputFile>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			
+			<!-- Site -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-site-plugin</artifactId>
+				<version>3.0</version>
+				<inherited>true</inherited>
+				<configuration>
+					<argLine>-Xmx1024m</argLine>
+					<outputEncoding>utf-8</outputEncoding>
+					<siteDirectory>${basedir}/../../src/site</siteDirectory>
+					<outputDirectory>${basedir}/target/site/</outputDirectory>
+				</configuration>
+			</plugin>
+			
+			<plugin>
+				<groupId>org.sonatype.flexmojos</groupId>
+				<artifactId>flexmojos-maven-plugin</artifactId>
+				<configuration>
+					<keepAs3Metadatas>
+						<param>Message</param>
+						<param>MessageInterceptor</param>
+						<param>MessageDispatcher</param>
+					</keepAs3Metadatas>
+					<includeFiles>
+						<include>design.xml</include>
+						<include>metadata.xml</include>
+					</includeFiles>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+	
+	<dependencies>
+		<dependency>
+			<groupId>com.bojinx</groupId>
+			<artifactId>bojinx-processor-display-scanning</artifactId>
+			<version>${build.version}</version>
+			<type>swc</type>
+			<scope>merged</scope>
+		</dependency>
+		<dependency>
+		  <groupId>starling</groupId>
+		  <artifactId>starling</artifactId>
+		  <version>2</version>
+		  <type>swc</type>
+		</dependency>
+	</dependencies>
+</project>

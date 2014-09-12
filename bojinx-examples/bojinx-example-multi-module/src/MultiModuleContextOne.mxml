@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<bojinx:Beans xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		 xmlns:s="library://ns.adobe.com/flex/spark" 
+		 xmlns:mx="library://ns.adobe.com/flex/mx" 
+		 xmlns:bojinx="http://www.rsnewmedia.co.uk/bojinx/" xmlns:injection="com.bojinx.injection.*" xmlns:config="com.bojinx.command.config.*" xmlns:flow="com.bojinx.command.config.flow.*" xmlns:mxml="com.bojinx.command.config.mxml.*" xmlns:mxml1="com.bojinx.command.config.factory.mxml.*">
+	
+	<fx:Script>
+		<![CDATA[
+			import com.bojinx.message.TestMessageOne;
+			import com.bojinx.test.TestCommandOne;
+			import com.bojinx.test.TestCommandTwo;
+			import com.bojinx.test.TestObjectOne;
+			import com.bojinx.test.TestObjectThree;
+			import com.bojinx.test.TestObjectTwo;
+		]]>
+	</fx:Script>
+	
+	<fx:Declarations>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+	</fx:Declarations>
+	
+	<bojinx:processors>
+		<bojinx:CommandProcessor />
+		<bojinx:MessageProcessor />
+		<injection:InjectionProcessor />
+	</bojinx:processors>
+	
+	<bojinx:Bean source="{TestObjectOne}" id="objectOne" singleton="true" lazy="false">
+		<bojinx:constructorArgs>
+			<bojinx:ConstructorArg ref="objectTwo" />
+		</bojinx:constructorArgs>
+	</bojinx:Bean>
+	
+	<bojinx:Command source="{TestCommandOne}" id="testCommandOne" />
+	
+	<bojinx:CommandMap trigger="{TestMessageOne}" filter="testCommand">
+		<bojinx:CommandFlow mode="sequential">
+			<bojinx:Command source="{TestCommandOne}" />
+		</bojinx:CommandFlow>
+	</bojinx:CommandMap>
+	
+	
+	<!--<mxml:CommandMap trigger="{TestMessageOne}" topic="filterCommand" id="sequence1" description="Root Command Map">
+		<config:CommandFlow mode="sequential" description="Sequential Flow">
+			<config:Command source="{TestCommandOne}" id="testCommandOne" label="Sequential Command 1">
+				<config:ResultLink ref="testCommandTwo" />
+			</config:Command>
+			<config:Command source="{TestCommandTwo}" id="testCommandTwo" label="Sequential Command 2" />
+		</config:CommandFlow>
+		<config:CommandFlow mode="concurrent" description="Concurrent Flow">
+			<config:Command source="{TestCommandOne}" label="Concurrent Command 1" />
+			<config:Command source="{TestCommandTwo}" label="Concurrent Command 2" />
+		</config:CommandFlow>
+	</mxml:CommandMap>-->
+	
+</bojinx:Beans>

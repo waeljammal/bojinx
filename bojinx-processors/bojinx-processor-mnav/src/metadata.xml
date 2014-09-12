@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<annotations version="1.0">
+
+	<metadata name="Enter" description="Get notified when the user first enters a view">
+		<context name="method">
+			<attribute name="path" type="string" required="true" />
+			<attribute name="time" type="string" required="true" values="first,every" />
+		</context>
+	</metadata>
+
+	<metadata name="Exit" description="Get notified when the user exists a view">
+		<context name="method">
+			<attribute name="path" type="string" required="true" />
+		</context>
+	</metadata>
+
+	<metadata name="Effect" description="Associate an Effect with a path which will play once that path has entered or exited">
+		<context name="method">
+			<attribute name="kind" type="string" required="true" />
+			<attribute name="state" type="string" required="true" />
+		</context>
+	</metadata>
+
+	<metadata name="EffectPlay" description="Play a sequence of queued effects.">
+	
+	</metadata>
+
+	<metadata name="EffectQueue" description="Begin a new effect queue.">
+	
+	</metadata>
+
+	<metadata name="RequestMapping" description="Placing this on a class will let MNav know that any Enter or Exit metadata is a child of this path">
+		<context name="class">
+			<attribute name="path" type="string" required="true" />
+		</context>
+	</metadata>
+
+	<metadata name="EffectFactory" description="Placing this on a class will let MNav know that it shoul map effects from this class for the given path">
+		<context name="class">
+			<attribute name="path" type="string" required="true" />
+		</context>
+	</metadata>
+
+	<metadata name="WayPoint" description="Placing this on a UIComponent will let MNav know that it should create destinations out of the states">
+		<context name="method">
+			<attribute name="path" type="string" required="true" />
+			<attribute name="target" type="string" required="true" />
+			<attribute name="mode" type="string" required="true" values="skin" />
+		</context>
+	</metadata>
+
+</annotations>

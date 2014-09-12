@@ -1,0 +1,3 @@
+<?xml version="1.0"?><componentPackage>
+  <component id="BojinxFlexUnit4Runner" class="com.bojinx.test.flexunit4.BojinxFlexUnit4Runner"/>
+</componentPackage>

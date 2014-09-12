@@ -1,0 +1,3 @@
+<?xml version="1.0"?><componentPackage>
+  <component id="Task" class="com.bojinx.utils.tasks.Task"/>
+</componentPackage>

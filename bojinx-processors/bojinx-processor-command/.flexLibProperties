@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<flexLibProperties includeAllClasses="true" useMultiPlatformConfig="false" version="3">
+  <includeClasses>
+    <classEntry path="com.bojinx.command.operation.CommandOperation"/>
+    <classEntry path="com.bojinx.command.config.CommandMap"/>
+    <classEntry path="com.bojinx.command.cache.CommandCacheConstants"/>
+    <classEntry path="com.bojinx.command.cache.CommandRegistry"/>
+    <classEntry path="com.bojinx.command.config.CommandFlow"/>
+    <classEntry path="com.bojinx.command.config.factory.CommandFactory"/>
+    <classEntry path="com.bojinx.command.config.ResultLink"/>
+    <classEntry path="com.bojinx.command.config.ResultLoop"/>
+    <classEntry path="com.bojinx.command.config.CommandFilter"/>
+    <classEntry path="com.bojinx.command.config.filter.ContainsFilter"/>
+    <classEntry path="com.bojinx.command.config.filter.ExpressionFilter"/>
+    <classEntry path="com.bojinx.command.config.FaultChain"/>
+    <classEntry path="com.bojinx.command.config.mxml.CommandMap"/>
+    <classEntry path="com.bojinx.command.core.CommandMapMessageListener"/>
+    <classEntry path="com.bojinx.command.core.event.CommandMapEvent"/>
+    <classEntry path="com.bojinx.command.core.event.CommandMapFaultEvent"/>
+    <classEntry path="com.bojinx.command.model.CommandMapInstanceInfo"/>
+    <classEntry path="com.bojinx.command.util.CommandUtil"/>
+    <classEntry path="com.bojinx.command.api.ICloneableElement"/>
+    <classEntry path="com.bojinx.command.api.ICommandElement"/>
+    <classEntry path="com.bojinx.command.util.error.InvalidCommandError"/>
+    <classEntry path="com.bojinx.command.config.task.CommandTaskBase"/>
+    <classEntry path="com.bojinx.command.config.factory.mxml.Command"/>
+    <classEntry path="com.bojinx.command.config.filter.ResultTypeFilter"/>
+    <classEntry path="com.bojinx.command.api.ICommand"/>
+    <classEntry path="com.bojinx.command.core.CommandMessageListener"/>
+    <classEntry path="com.bojinx.command.meta.CommandRunner"/>
+    <classEntry path="com.bojinx.command.core.handler.DynamicCommandBeanHandler"/>
+    <classEntry path="com.bojinx.command.config.task.CommandTask"/>
+    <classEntry path="com.bojinx.command.config.factory.CommandMapFactory"/>
+    <classEntry path="com.bojinx.command.config.factory.CommandFlowFactory"/>
+    <classEntry path="com.bojinx.command.config.factory.mxml.CommandMap"/>
+    <classEntry path="com.bojinx.command.config.factory.mxml.CommandFlow"/>
+  </includeClasses>
+  <includeResources/>
+  <namespaceManifests>
+    <namespaceManifestEntry manifest="bojinx-manifest.xml" namespace="http://www.rsnewmedia.co.uk/bojinx/"/>
+  </namespaceManifests>
+</flexLibProperties>

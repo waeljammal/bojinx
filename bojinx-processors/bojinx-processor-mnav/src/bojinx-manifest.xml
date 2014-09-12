@@ -1,0 +1,6 @@
+<?xml version="1.0"?><componentPackage>
+  <component id="Location" class="com.bojinx.mnav.config.Location"/>
+  <component id="SiteMap" class="com.bojinx.mnav.config.SiteMap"/>
+  <component id="MNavMessageAdapter" class="com.bojinx.mnav.core.adapter.MNavMessageAdapter"/>
+  <component id="MNavProcessor" class="com.bojinx.mnav.MNavProcessor"/>
+</componentPackage>

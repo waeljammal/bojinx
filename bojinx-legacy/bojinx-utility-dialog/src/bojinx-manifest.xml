@@ -1,0 +1,3 @@
+<?xml version="1.0"?><componentPackage>
+  <component id="ModalManager" class="com.bojinx.dialog.ModalManager"/>
+</componentPackage>

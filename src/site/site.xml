@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="Bojinx">
+    <bannerLeft>
+        <name>Bojinx</name>
+    </bannerLeft>
+    <skin>
+        <groupId>com.bojinx.skins</groupId>
+        <artifactId>bojinx-site-skin</artifactId>
+        <version>1.0</version>
+    </skin>
+    <body>
+        <links>
+            <item name="${project.name}" href="${project.url}"/>
+        </links>
+
+        <menu ref="parent" />
+        <menu ref="modules" />
+        <menu ref="reports" />
+        <menu name="Links">
+              <item name="Documentation" href="http://docs.rsnewmedia.co.uk/display/BojinxV1/Introduction"/>
+              <item name="Bug Reporting" href="http://jira.rsnewmedia.co.uk"/>
+              <item name="SVN Browser" href="http://fisheye.rsnewmedia.co.uk"/>
+        </menu>
+    </body>
+</project>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<flexLibProperties includeAllClasses="true" useMultiPlatformConfig="false" version="3">
+  <includeClasses>
+    <classEntry path="com.bojinx.utils.tasks.api.ITask"/>
+    <classEntry path="com.bojinx.utils.tasks.Task"/>
+    <classEntry path="com.bojinx.utils.tasks.event.TaskStateChangeEvent"/>
+    <classEntry path="com.bojinx.utils.tasks.TaskGroup"/>
+    <classEntry path="com.bojinx.utils.tasks.event.TaskProgressEvent"/>
+    <classEntry path="com.bojinx.utils.tasks.api.ITaskGroup"/>
+  </includeClasses>
+  <includeResources/>
+  <namespaceManifests/>
+</flexLibProperties>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<flexLibProperties includeAllClasses="true" useMultiPlatformConfig="false" version="3">
+  <includeClasses>
+    <classEntry path="com.bojinx.messaging.operation.MessageOperation"/>
+    <classEntry path="com.bojinx.messaging.EventRoutingProcessor"/>
+    <classEntry path="com.bojinx.messaging.error.InvalidMessageHandlerError"/>
+    <classEntry path="com.bojinx.messaging.error.InvalidInterceptorError"/>
+    <classEntry path="com.bojinx.messaging.operation.EventRoutingOperation"/>
+  </includeClasses>
+  <includeResources>
+    <resourceEntry destPath="metadata.xml" sourcePath="metadata.xml"/>
+    <resourceEntry destPath="bojinx-manifest.xml" sourcePath="bojinx-manifest.xml"/>
+  </includeResources>
+  <namespaceManifests>
+    <namespaceManifestEntry manifest="bojinx-manifest.xml" namespace="http://www.rsnewmedia.co.uk/bojinx/"/>
+  </namespaceManifests>
+</flexLibProperties>

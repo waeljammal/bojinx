@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<flexLibProperties includeAllClasses="true" useMultiPlatformConfig="false" version="3">
+  <includeClasses>
+    <classEntry path="com.bojinx.test.flexunit4.BojinxFlexUnit4Runner"/>
+    <classEntry path="com.bojinx.test.flexunit4.AutoWiredTestCase"/>
+    <classEntry path="com.bojinx.test.core.TestCaseRegistry"/>
+    <classEntry path="com.bojinx.test.core.TestCaseContextFactory"/>
+  </includeClasses>
+  <includeResources/>
+  <namespaceManifests/>
+</flexLibProperties>

@@ -1,0 +1,4 @@
+<?xml version="1.0"?><componentPackage>
+  <component id="InjectionProcessor" class="com.bojinx.injection.InjectionProcessor"/>
+  <component id="FastInject" class="com.bojinx.injection.mxml.FastInject"/>
+</componentPackage>

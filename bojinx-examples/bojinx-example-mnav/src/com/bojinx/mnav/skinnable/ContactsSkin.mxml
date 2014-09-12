@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Skin xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		xmlns:s="library://ns.adobe.com/flex/spark" 
+		xmlns:mx="library://ns.adobe.com/flex/mx" 
+		xmlns:component="com.bojinx.mnav.component.*" 
+		xmlns:effect="com.bojinx.mnav.core.effect.*"
+		minHeight="0" xmlns:skinnable="com.bojinx.mnav.skinnable.*">
+	
+	<!-- host component -->
+	<fx:Metadata>
+		[HostComponent("com.bojinx.mnav.skinnable.Contacts")]
+	</fx:Metadata>
+	
+	<fx:Declarations>
+		<!--<effect:EffectLinks>
+			<effect:EffectLink target="{testComp}" />
+			<effect:EffectLink target="{label}" />
+			<effect:EffectLink target="{stateLabel}" />
+		</effect:EffectLinks>-->
+	</fx:Declarations>
+	
+	<s:states>
+		<s:State name="public" />
+		<s:State name="private" />
+	</s:states>
+	
+	
+	<s:Rect width="100%" height="100%">
+		<s:fill>
+			<s:SolidColor color="{hostComponent.color}" />
+		</s:fill>
+	</s:Rect>
+	 
+	<s:Label text="View Two: {hostComponent.label}" paddingTop="10" paddingLeft="10" id="label" />
+	<s:Label text="Current State: {currentState}" paddingLeft="10" paddingTop="10" right="10" id="stateLabel" />
+	
+	<s:VGroup left="20" right="20" top="30" bottom="20" verticalAlign="middle" horizontalAlign="center" minHeight="0" minWidth="0">
+		<component:TestComponentOne skinClass="com.bojinx.mnav.component.TestComponentOneSkin" includeIn="private" id="testComp" width="100%" height="200" alpha="1" />
+	</s:VGroup>
+	
+</s:Skin>

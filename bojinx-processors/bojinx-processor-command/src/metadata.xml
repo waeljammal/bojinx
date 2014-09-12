@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<annotations version="1.0">
+
+	<metadata name="Command" description="The method to execute on the Command Object">
+		<context name="method">
+			<attribute name="name" type="String" hint="optional topic" required="false" />
+			<attribute name="type" type="String" hint="optional class type to use (use this with interfaces)" />
+		</context>
+	</metadata>
+
+	<metadata name="CommandResult" description="The method to execute when a result is returned">
+		<context name="method">
+			<attribute name="name" type="String" hint="optional topic" required="false" />
+			<attribute name="type" type="String" hint="optional class type to use (use this with interfaces)" />
+		</context>
+	</metadata>
+
+	<metadata name="CommandFault" description="The method to execute when a fault is returned">
+		<context name="method">
+			<attribute name="name" type="String" hint="optional topic" required="false" />
+			<attribute name="type" type="String" hint="optional class type to use (use this with interfaces)" />
+		</context>
+	</metadata>
+
+	<metadata name="GlobalCommandFault" description="Can be placed anywhere to capture all faults">
+		<context name="method" />
+	</metadata>
+
+</annotations>

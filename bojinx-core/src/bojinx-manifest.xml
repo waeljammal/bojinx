@@ -1,0 +1,12 @@
+<?xml version="1.0"?><componentPackage>
+  <component id="Beans" class="com.bojinx.system.context.config.Beans"/>
+  <component id="ConstructorArg" class="com.bojinx.system.context.config.ConstructorArg"/>
+  <component id="MethodInvoker" class="com.bojinx.system.context.config.MethodInvoker"/>
+  <component id="MethodParameter" class="com.bojinx.system.context.config.MethodParameter"/>
+  <component id="Bean" class="com.bojinx.system.context.config.mxml.Bean"/>
+  <component id="Property" class="com.bojinx.system.context.config.Property"/>
+  <component id="EmbeddedConfig" class="com.bojinx.system.context.loaders.config.EmbeddedConfig"/>
+  <component id="ExtentionLoader" class="com.bojinx.system.context.loaders.extensions.ExtentionLoader"/>
+  <component id="ViewSettings" class="com.bojinx.system.context.loaders.settings.ViewSettings"/>
+  <component id="ApplicationContext" class="com.bojinx.system.context.mxml.ApplicationContext"/>
+</componentPackage>

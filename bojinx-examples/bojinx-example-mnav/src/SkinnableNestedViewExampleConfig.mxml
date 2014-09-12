@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<bojinx:Beans xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		 xmlns:s="library://ns.adobe.com/flex/spark" 
+		 xmlns:mx="library://ns.adobe.com/flex/mx" 
+		 xmlns:bojinx="http://www.rsnewmedia.co.uk/bojinx/" 
+		 xmlns:mxml="com.bojinx.command.config.mxml.*" >
+	
+	<fx:Script>
+		<![CDATA[
+			import com.bojinx.mnav.skinnable.effect.ContactsEffectFactory;
+			import com.bojinx.mnav.skinnable.effect.ContentEffectFactory;
+			import com.bojinx.mnav.skinnable.effect.MessagesEffectFactory;
+			import com.bojinx.mnav.skinnable.presentation.ComponentTwoPM;
+			import com.bojinx.mnav.skinnable.presentation.ContentPM;
+			
+		]]>
+	</fx:Script>
+	
+	<fx:Declarations>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+	</fx:Declarations>
+	
+	<bojinx:processors>
+		<bojinx:InjectionProcessor />
+		<bojinx:MessageProcessor />
+		
+		<bojinx:MNavProcessor>
+			<bojinx:adapters>
+				<bojinx:MNavMessageAdapter />
+			</bojinx:adapters>
+		</bojinx:MNavProcessor>
+	</bojinx:processors>
+	
+	<bojinx:Bean source="{ContentPM}" singleton="true" />
+	<bojinx:Bean source="{ComponentTwoPM}" singleton="true" />
+	
+	<bojinx:Bean source="{ContentEffectFactory}" lazy="false" singleton="true" />
+	<bojinx:Bean source="{ContactsEffectFactory}" lazy="false" singleton="true" />
+	<bojinx:Bean source="{MessagesEffectFactory}" lazy="false" singleton="true" />
+	
+</bojinx:Beans>

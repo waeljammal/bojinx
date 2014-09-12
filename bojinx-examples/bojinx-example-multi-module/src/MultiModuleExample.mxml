@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Application xmlns:fx="http://ns.adobe.com/mxml/2009" 
+			   xmlns:s="library://ns.adobe.com/flex/spark" 
+			   xmlns:mx="library://ns.adobe.com/flex/mx" minWidth="955" minHeight="600" xmlns:bojinx="http://www.rsnewmedia.co.uk/bojinx/">
+	
+	<fx:Script>
+		<![CDATA[
+			import com.bojinx.api.message.IInterceptedMessage;
+			import com.bojinx.api.processor.display.IViewManager;
+			import com.bojinx.message.TestMessageOne;
+			import com.bojinx.system.context.event.ContextEvent;
+			import com.bojinx.system.message.support.Scope;
+			import com.bojinx.test.TestObjectOne;
+			
+			import mx.collections.ArrayCollection;
+			import mx.collections.ArrayList;
+			
+			import spark.components.TextInput;
+			
+			public var wire:String = "yes";
+			
+			[Bindable]
+			[Inject]
+			public var test:TestObjectOne;
+			
+			[MessageDispatcher]
+			public var dispatch:Function;
+			
+			[ViewManager]
+			public var manager:IViewManager;
+			
+			protected function onContextLoaded(event:ContextEvent):void
+			{
+				time.text = "Context Speed " + mainContext.initializationTime.toString() + " ms";
+			}
+			
+			[Ready]
+			public final function onReady():void
+			{
+				module.url="ModuleOne.swf";
+			}
+			
+			protected function unloadModule(event:MouseEvent):void
+			{
+				time.setFocus();
+				module.unloadModule();
+				module.removeAllElements();
+				module.applicationDomain = null;
+				grp.removeElement(module);
+				module = null;
+				ArrayCollection;
+				ArrayList;
+			}
+			
+			[MessageInterceptor(name="filterOne", priority="100")]
+			public function interceptFilterOne(m:TestMessageOne, i:IInterceptedMessage):void
+			{
+				output.text += "\nIntercepted TestMessageOne in interceptFilterOne [Index]: " + m.index + " [Priority]: 0"; 
+				m.index++;
+				setTimeout(i.resume, 1500);
+			}
+			
+			[Message(name="filterOne")]
+			public function handleFilterOne(m:TestMessageOne):void
+			{
+				output.text += "\nReceived TestMessageOne in handleFilterOne [Index]: " + m.index + " [Priority]: 0"; 
+				m.index++;
+			}
+			
+			protected function dispatchMessageFilterOne(event:MouseEvent):void
+			{
+				dispatch(new TestMessageOne(), TestMessageOne.FILTER_ONE, messageScope.selected ? Scope.GLOBAL : Scope.LOCAL);
+			}
+			
+			protected function dispatchMessage(event:MouseEvent):void
+			{
+				dispatch(new TestMessageOne(), TestMessageOne.FILTER_COMMAND, messageScope.selected ? Scope.GLOBAL : Scope.LOCAL);
+			}
+			
+		]]>
+	</fx:Script>
+	
+	<fx:Declarations>
+		<bojinx:ApplicationContext id="mainContext" contextLoaded="onContextLoaded(event)">
+			<bojinx:EmbeddedConfig source="{MultiModuleContextOne}" />
+			<bojinx:EmbeddedConfig source="{MultiModuleContextTwo}" />
+			<bojinx:ViewSettings autoReleaseComponents="true" autoReleaseContexts="true" inheritFromParentContext="true" />
+			<bojinx:LoggingExtension logLevel="debug">
+				<bojinx:TraceAppender />
+			</bojinx:LoggingExtension> 
+			<bojinx:displayProcessor>
+				<bojinx:DisplayObjectProcessor>
+					<bojinx:PropertyValueBasedObjectSelector propertyName="wire" />
+				</bojinx:DisplayObjectProcessor>
+			</bojinx:displayProcessor>
+		</bojinx:ApplicationContext>
+	</fx:Declarations>
+	
+	<s:controlBarContent>
+		<s:Button top="10" left="10" label="Unload Module A" id="button" click="unloadModule(event)" />
+		<s:Spacer width="10" />
+		<s:Button left="10" label="Dispatch Message" click="dispatchMessageFilterOne(event)" />
+		<s:Button left="10" label="Dispatch Message Command" click="dispatchMessage(event)" />
+		<s:CheckBox label="Global Scope" selected="true" id="messageScope" />
+		<s:Spacer width="100%" />
+		<s:TextInput top="10" right="10" width="150" text="@{test.value}" editable="true" />
+		<s:Spacer width="10" />
+		<s:TextInput top="10" right="10" id="time" editable="false" />
+	</s:controlBarContent>
+	
+	<s:VGroup top="10" left="10" right="10" bottom="10" id="grp">
+		<s:TextArea width="100%" height="50" id="output" text="Main App Output" />
+		<s:ModuleLoader width="100%" height="100%" id="module" applicationDomain="{new ApplicationDomain(ApplicationDomain.currentDomain)}" />
+	</s:VGroup>
+	
+</s:Application>

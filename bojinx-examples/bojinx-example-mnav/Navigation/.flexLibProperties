@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<flexLibProperties includeAllClasses="true" useMultiPlatformConfig="false" version="3">
+  <includeClasses>
+    <classEntry path="com.adobe.cairngorm.navigation.waypoint.WaypointHandler_SelectedChild_Test"/>
+    <classEntry path="com.adobe.cairngorm.navigation.waypoint.WaypointHandler_States_Test"/>
+    <classEntry path="com.adobe.cairngorm.navigation.waypoint.SelectedChildContainer"/>
+    <classEntry path="com.adobe.cairngorm.navigation.waypoint.ContentDestination"/>
+    <classEntry path="com.adobe.cairngorm.navigation.waypoint.StatesContainer"/>
+    <classEntry path="com.adobe.cairngorm.navigation.waypoint.IWaypoint"/>
+    <classEntry path="com.adobe.cairngorm.navigation.waypoint.IDestinationRegistration"/>
+    <classEntry path="com.adobe.cairngorm.navigation.core.INavigationRegistry"/>
+    <classEntry path="com.adobe.cairngorm.navigation.core.DestinationRegistryTest"/>
+  </includeClasses>
+  <includeResources/>
+  <namespaceManifests/>
+</flexLibProperties>

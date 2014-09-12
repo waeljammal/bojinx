@@ -1,0 +1,4 @@
+<?xml version="1.0"?><componentPackage>
+  <component id="EventRoutingProcessor" class="com.bojinx.messaging.EventRoutingProcessor"/>
+  <component id="MessageProcessor" class="com.bojinx.messaging.MessageProcessor"/>
+</componentPackage>

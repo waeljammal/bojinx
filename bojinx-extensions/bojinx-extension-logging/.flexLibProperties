@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<flexLibProperties includeAllClasses="true" useMultiPlatformConfig="false" version="3">
+  <includeClasses>
+    <classEntry path="com.bojinx.logging.data.LogData"/>
+    <classEntry path="com.bojinx.logging.data.DiagramData"/>
+    <classEntry path="com.bojinx.logging.data.DataGroup"/>
+    <classEntry path="com.bojinx.logging.data.LogDataType"/>
+    <classEntry path="com.bojinx.logging.adapters.SharedSocketAdaptor"/>
+    <classEntry path="com.bojinx.logging.data.LinkTo"/>
+    <classEntry path="com.bojinx.logging.data.Command"/>
+    <classEntry path="com.bojinx.logging.constants.StructType"/>
+    <classEntry path="com.bojinx.logging.adapters.SocketAdapter"/>
+    <classEntry path="com.bojinx.logging.data.SocketData"/>
+  </includeClasses>
+  <includeResources>
+    <resourceEntry destPath="design.xml" sourcePath="design.xml"/>
+    <resourceEntry destPath="org/spicefactory/readme" sourcePath="org/spicefactory/readme"/>
+    <resourceEntry destPath="bojinx-manifest.xml" sourcePath="bojinx-manifest.xml"/>
+    <resourceEntry destPath="metadata.xml" sourcePath="metadata.xml"/>
+  </includeResources>
+  <namespaceManifests>
+    <namespaceManifestEntry manifest="bojinx-manifest.xml" namespace="http://www.rsnewmedia.co.uk/bojinx/"/>
+  </namespaceManifests>
+</flexLibProperties>

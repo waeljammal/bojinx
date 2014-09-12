@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<flexLibProperties includeAllClasses="true" useMultiPlatformConfig="false" version="3">
+  <includeClasses>
+    <classEntry path="com.bojinx.injection.mxml.FastInject"/>
+  </includeClasses>
+  <includeResources>
+    <resourceEntry destPath="design.xml" sourcePath="design.xml"/>
+    <resourceEntry destPath="bojinx-manifest.xml" sourcePath="bojinx-manifest.xml"/>
+    <resourceEntry destPath="metadata.xml" sourcePath="metadata.xml"/>
+  </includeResources>
+  <namespaceManifests>
+    <namespaceManifestEntry manifest="bojinx-manifest.xml" namespace="http://www.rsnewmedia.co.uk/bojinx/"/>
+  </namespaceManifests>
+</flexLibProperties>

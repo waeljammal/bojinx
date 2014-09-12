@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<actionScriptProperties analytics="false" mainApplicationPath="Navigation.as" projectUUID="b047a50d-03a1-46a2-b409-aefd114da38d" version="10">
+  <compiler autoRSLOrdering="true" copyDependentFiles="false" flexSDK="Flex 4.5.1" fteInMXComponents="false" generateAccessible="false" htmlExpressInstall="true" htmlGenerate="false" htmlHistoryManagement="false" htmlPlayerVersionCheck="true" includeNetmonSwc="false" outputFolderPath="bin" removeUnusedRSL="true" sourceFolderPath="src" strict="true" targetPlayerVersion="0.0.0" useApolloConfig="false" useDebugRSLSwfs="true" verifyDigests="true" warn="true">
+    <compilerSourcePath>
+      <compilerSourcePathEntry kind="1" linkType="1" path="test"/>
+    </compilerSourcePath>
+    <libraryPath defaultLinkType="0">
+      <libraryPathEntry kind="4" path="">
+        <excludedEntries>
+          <libraryPathEntry kind="3" linkType="1" path="${PROJECT_FRAMEWORKS}/libs/flex.swc" useDefaultLinkType="false"/>
+        </excludedEntries>
+      </libraryPathEntry>
+      <libraryPathEntry kind="3" linkType="1" path="${M2_REPO}/org/hamcrest/hamcrest-as3/1.1/hamcrest-as3-1.1.swc" useDefaultLinkType="false"/>
+      <libraryPathEntry kind="3" linkType="1" path="${M2_REPO}/com/adobe/flexunit/flexunit/4.1-RC2/flexunit-4.1-RC2.swc" useDefaultLinkType="false"/>
+      <libraryPathEntry kind="3" linkType="1" path="${M2_REPO}/asmock/asmock-flexunit4.1/1.0/asmock-flexunit4.1-1.0.swc" useDefaultLinkType="false"/>
+      <libraryPathEntry kind="3" linkType="1" path="${M2_REPO}/asmock/asmock/1.0/asmock-1.0.swc" useDefaultLinkType="false"/>
+    </libraryPath>
+    <sourceAttachmentPath/>
+  </compiler>
+  <applications>
+    <application path="Navigation.as"/>
+  </applications>
+  <modules/>
+  <buildCSSFiles/>
+  <flashCatalyst validateFlashCatalystCompatibility="false"/>
+</actionScriptProperties>

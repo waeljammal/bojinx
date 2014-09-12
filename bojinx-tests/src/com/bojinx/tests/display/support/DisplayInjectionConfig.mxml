@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<bojinx:Beans xmlns:bojinx="http://www.rsnewmedia.co.uk/bojinx/"
+				xmlns:fx="http://ns.adobe.com/mxml/2009"
+				xmlns:mx="library://ns.adobe.com/flex/mx"
+				xmlns:s="library://ns.adobe.com/flex/spark">
+	<fx:Script>
+		<![CDATA[
+			
+		]]>
+	</fx:Script>
+
+	<bojinx:processors>
+		<!-- Feature Plugins -->
+		<bojinx:InjectionProcessor />
+	</bojinx:processors>
+
+	<bojinx:Bean singleton="true" source="{DisplayInjectableObject}" id="one" />
+
+</bojinx:Beans>

@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>com.bojinx</groupId>
+		<artifactId>bojinx-as3-framework</artifactId>
+		<version>2.0.0</version>
+		<relativePath>../pom.xml</relativePath>
+	</parent>
+
+	<groupId>com.bojinx</groupId>
+	<artifactId>bojinx-utilities</artifactId>
+	<version>2.0.0</version>
+	<name>Bojinx Utilities Bundle</name>
+	<description>Bundled Utilities</description>
+
+	<packaging>pom</packaging>
+
+	<!-- SVN -->
+	<!-- <scm> -->
+	<!-- <connection>scm:svn:http://svn.bojinx.com</connection> -->
+	<!-- <developerConnection>scm:svn:http://svn.bojinx.com</developerConnection> -->
+	<!-- <url>http://fisheye.rsnewmedia.co.uk</url> --> 
+	<!-- </scm> --> 
+
+	<!-- Modules -->  
+	<modules>
+		<module>bojinx-utility-tasks</module>
+		<module>bojinx-utility-test</module>
+	</modules>  
+
+	<!-- Build -->
+	<build>
+		<sourceDirectory>src</sourceDirectory>
+
+		<resources>
+			<resource> 
+				<directory>${basedir}/target/site/</directory>
+			</resource>
+		</resources>
+
+		<!-- Flex Mojos -->
+		<plugins> 
+			<!-- Resources -->
+			<plugin>
+				<artifactId>maven-resources-plugin</artifactId>
+				<version>2.5</version>
+				<executions>
+					<execution>
+						<id>copy-resources</id>
+						<phase>prepare-package</phase>
+						<goals>
+							<goal>copy-resources</goal>
+						</goals>
+						<configuration>
+							<overwrite>true</overwrite>
+							<outputDirectory>../target/site/${project.artifactId}</outputDirectory>
+							<resources>
+								<resource>
+									<directory>${basedir}/target/site/</directory>
+								</resource>
+							</resources>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
+			<!-- Site -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-site-plugin</artifactId>
+				<version>3.0</version>
+				<inherited>true</inherited>
+				<configuration>
+					<argLine>-Xmx1024m</argLine>
+					<outputEncoding>utf-8</outputEncoding>
+					<siteDirectory>${basedir}/../src/site</siteDirectory>
+					<outputDirectory>target/site/</outputDirectory>
+				</configuration>
+			</plugin>
+
+			<!-- Flex Mojos -->
+			<plugin>
+				<groupId>org.sonatype.flexmojos</groupId>
+				<artifactId>flexmojos-maven-plugin</artifactId>
+				<version>${flexmojos.version}</version>
+				<extensions>true</extensions>
+				<dependencies>
+					<dependency>
+						<groupId>com.adobe.flex</groupId>
+						<artifactId>compiler</artifactId>
+						<version>${flex.sdk.version}</version>
+						<type>pom</type>
+					</dependency>
+				</dependencies>
+				<configuration>
+					<debug>${debug}</debug>
+					<optimize>true</optimize>
+					<finalName>${project.artifactId}-${output.version}</finalName>
+					<defines>
+						<property>
+							<name>CONFIG::log</name>
+							<value>${logging}</value>
+						</property>
+					</defines>
+					<includeSources>
+						<includeSource>${project.build.sourceDirectory}</includeSource>
+					</includeSources>
+					<namespaces>
+						<namespace>
+							<uri>http://www.rsnewmedia.co.uk/bojinx/</uri>
+							<manifest>src/bojinx-manifest.xml</manifest>
+						</namespace>
+					</namespaces>
+					<includeNamespaces>
+						<namespace>http://www.rsnewmedia.co.uk/bojinx/</namespace>
+					</includeNamespaces>
+				</configuration>
+				<executions>
+					<execution>
+						<id>generate-asdoc</id>
+						<phase>site</phase>
+						<goals>
+							<goal>asdoc-report</goal>
+						</goals>
+						<configuration>
+							<aggregate>false</aggregate>
+							<sourcePaths>
+								<path>${project.build.sourceDirectory}/com/bojinx</path>
+							</sourcePaths>
+							<outputDirectory>${basedir}/target/site/asdoc</outputDirectory>
+							<defines>
+								<property>
+									<name>CONFIG::log</name>
+									<value>${logging}</value>
+								</property>
+							</defines>
+							<description>API documentation</description>
+							<mainTitle>API documentation</mainTitle>
+							<windowTitle>API documentation</windowTitle>
+							<name>Bojinx API Docs</name>
+							<keepXml>true</keepXml>
+							<dumpConfigAttach>true</dumpConfigAttach>
+							<showWarnings>true</showWarnings>
+							<lenient>true</lenient>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+
+	<reporting>
+		<plugins>
+			<plugin>
+				<groupId>org.sonatype.flexmojos</groupId>
+				<artifactId>flexmojos-maven-plugin</artifactId>
+				<version>${flexmojos.version}</version>
+				<inherited>true</inherited>
+				<reportSets>
+					<reportSet>
+						<id>flex-reports</id>
+						<reports>
+							<report>asdoc-report</report>
+						</reports>
+						<configuration>
+							<argLine>-Xmx1024m</argLine>
+							<aggregate>true</aggregate>
+							<defines>
+								<property>
+									<name>CONFIG::log</name>
+									<value>${logging}</value>
+								</property>
+							</defines>
+							<aggregate>false</aggregate>
+							<description>API documentation</description>
+							<mainTitle>API documentation</mainTitle>
+							<windowTitle>API documentation</windowTitle>
+							<name>API Documentation</name>
+						</configuration>
+					</reportSet>
+				</reportSets>
+			</plugin>
+		</plugins>
+	</reporting>
+
+	<!-- Dependencies -->
+	<dependencies>
+		<dependency>
+			<groupId>com.bojinx</groupId>
+			<artifactId>bojinx-core</artifactId>
+			<version>${build.version}</version>
+			<type>swc</type>
+			<scope>external</scope>
+		</dependency>
+	</dependencies>
+</project>

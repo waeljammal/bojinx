@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<design version="2">
+
+    <namespaces>
+        <namespace prefix="bojinx" uri="http://www.rsnewmedia.co.uk/bojinx/" />
+    </namespaces>
+ 
+    <categories>
+        <category id="Bojinx" label="Bojinx Starling Display Processor" defaultExpand="true" />
+    </categories>
+    
+</design>

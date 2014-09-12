@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testrun name="" >
+<testsuite  name="Default Test Suite" project="bojinx-tests">
+<testsuite name="com.bojinx.tests.commands.tests:SingleAsyncCommandResultTest" type="testsuiteclass"/>
+</testsuite>
+<portNumber value="8765" />
+</testrun>

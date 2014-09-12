@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Module xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		  xmlns:s="library://ns.adobe.com/flex/spark" 
+		  xmlns:mx="library://ns.adobe.com/flex/mx" width="100%" height="100%" 
+		  xmlns:bojinx="http://www.rsnewmedia.co.uk/bojinx/" xmlns:test="com.bojinx.test.*">
+	
+	<fx:Script>
+		<![CDATA[
+			import com.bojinx.api.message.IInterceptedMessage;
+			import com.bojinx.api.processor.display.IViewManager;
+			import com.bojinx.message.TestMessageOne;
+			import com.bojinx.test.TestObjectOne;
+			
+			public var wiredSubModule:String = "yes";
+			
+			[Bindable]
+			[Inject]
+			public var test:TestObjectOne;
+			
+			[ViewManager]
+			public var manager:IViewManager;
+			
+			public var test1:TestObjectOne;
+			
+			[Destroy]
+			public final function onDestroy():void
+			{
+				trace("DESTROY");
+			}
+			
+			protected function button1_clickHandler(event:MouseEvent):void
+			{
+				grp.removeElement(component);
+			} 
+			
+			[MessageInterceptor(name="*", priority="100")]
+			public function interceptAll(m:TestMessageOne, i:IInterceptedMessage):void
+			{
+				output.text += "\nIntercepted TestMessageOne in interceptAll " + m.index; 
+				m.index++;
+				setTimeout(i.resume, 1500);
+			}
+			
+			[Message(name="filterCommand", priority="50")]
+			public function handleFilterCommand(m:TestMessageOne):void
+			{
+				output.text += "\nReceived TestMessageOne in handleFilterCommand [Index]: " + m.index + " [Priority]: 50"; 
+				m.index++;
+			}
+			
+			[Message(name="filterOne", priority="50")]
+			public function handleFilterOne(m:TestMessageOne):void
+			{
+				output.text += "\nReceived TestMessage in handleFilterOne [Index]: " + m.index + " [Priority]: 50"; 
+				m.index++;
+			}
+		]]>
+	</fx:Script>
+	
+	<fx:Declarations>
+		<bojinx:ApplicationContext id="subModuleContext">
+			<bojinx:EmbeddedConfig source="{ModuleContext}" />
+			<bojinx:ViewSettings autoReleaseComponents="true" autoReleaseContexts="true" inheritFromParentContext="true" />
+			<bojinx:displayProcessor>
+				<bojinx:DisplayObjectProcessor>
+					<bojinx:PropertyValueBasedObjectSelector propertyName="wiredSubModule" />
+				</bojinx:DisplayObjectProcessor>
+			</bojinx:displayProcessor>
+		</bojinx:ApplicationContext>
+		
+		<bojinx:FastInject targetProperty="test1" source="objectOne" />
+	</fx:Declarations>
+	
+	<s:Rect percentHeight="100" percentWidth="100">
+		<s:fill>
+			<s:SolidColor color="0XFF0000" />
+		</s:fill> 
+	</s:Rect>
+	
+	<s:Button label="Remove Component Child" left="10" top="10" click="button1_clickHandler(event)" />
+	<s:Label top="15" horizontalCenter="0" text="Module B" />
+	<s:TextInput top="10" right="10" text="Injected {test.value}" editable="false" width="150" />
+	
+	<s:VGroup top="40" left="10" right="10" bottom="10" id="grp">
+		<s:TextArea width="100%" height="50" id="output" text="Module B Output"/>
+		<test:TestComponentOne width="100%" height="100%" id="component" />
+	</s:VGroup>
+	
+</s:Module>

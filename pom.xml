@@ -1,0 +1,472 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.bojinx</groupId> 
+	<artifactId>bojinx-as3-framework</artifactId>
+	<version>2.0.0</version>
+	<description>Bojinx AS3 Application Framework</description>
+	<name>Bojinx Framework</name> 
+	<packaging>pom</packaging>
+	<url>http://www.bojinx.co.uk</url>
+
+	<!-- Properties --> 
+	<properties>
+		<flex.sdk.version>4.6.b.23201</flex.sdk.version>
+		<flexmojos.version>4.0-RC2</flexmojos.version>
+		<flexunit.version>4.0-rc-1</flexunit.version>
+		<debug>true</debug>
+		<logging>true</logging>
+		<output.version>V2.0.0</output.version> 
+		<build.version>2.0.0</build.version>
+		<usr></usr>
+		<pass></pass>
+		<flex.flashPlayer.command>flashplayer</flex.flashPlayer.command>
+		<flashPlayer.command>flashplayer</flashPlayer.command>
+		<flashPlayerCommand>flashplayer</flashPlayerCommand>
+		<flashplayer.version.major>10</flashplayer.version.major>
+		<flashplayer.version.minor>0</flashplayer.version.minor> 
+		<flashplayer.version.revision>0</flashplayer.version.revision>
+		<flashplayer.version>${flashplayer.version.major}.${flashplayer.version.minor}.${flashplayer.version.revision}</flashplayer.version>
+	</properties> 
+
+	<!-- Developers -->
+	<developers>
+		<developer> 
+			<id>waeljammal</id>
+			<name>Wael Jamal</name>
+			<email>waeljammal [at] msn.com</email>
+			<url>http://www.bojinx.co.uk</url>
+			<organization>RS New Media Ltd.</organization>
+			<organizationUrl>
+			</organizationUrl> 
+			<timezone>0</timezone>
+			<roles>
+				<role>Owner</role>
+			</roles>
+		</developer>
+	</developers>   
+ 
+	<contributors>
+		<contributor>
+			<name>Andrew Martin</name>  
+			<email>na</email> 
+			<url>na</url>
+			<organization>Babuki</organization>
+			<organizationUrl></organizationUrl>
+			<timezone>0</timezone>
+			<roles>
+				<role>Contributer</role>
+			</roles>
+		</contributor>
+	</contributors>
+
+	<organization>
+		<name>RS New Media Ltd.</name>
+		<url>http://www.bojinx.co.uk</url>
+	</organization>
+
+	<!-- Issues -->
+	<issueManagement>
+		<system>jira</system>
+		<url>http://jira.bojinx.co.uk/browse/BOJINXASF</url>
+	</issueManagement>
+
+	<!-- Modules - Standard local build -->
+	<modules>
+		<module>bojinx-core</module>
+		<module>bojinx-extensions</module>
+		<module>bojinx-legacy</module>
+		<module>bojinx-processors</module>
+	</modules>
+
+	<!-- Profiles - Used by Bamboo to order builds correctly -->
+	<profiles>
+		<!-- Packages in to a zip file -->
+		<profile>
+			<id>PACKAGE</id>
+			<modules>
+				<module>bojinx-core</module>
+				<module>bojinx-utilities</module>
+				<module>bojinx-processors</module>
+				<module>bojinx-extensions</module>
+				<module>bojinx-legacy</module>
+				<module>distribution</module>
+			</modules>
+		</profile>
+		<!-- Packages and uploads to FTP -->
+		<profile>
+			<id>FTP</id>
+			<modules>
+				<module>bojinx-core</module>
+				<module>bojinx-processors</module>
+				<module>bojinx-utilities</module>
+				<module>bojinx-extensions</module>
+				<module>bojinx-tests</module>
+				<module>distribution</module>
+				<module>release</module>
+			</modules>
+		</profile>
+		<!-- Deploys to Nexus -->
+		<profile>
+			<id>NEXUS</id>
+			<modules>
+				<module>bojinx-core-lib</module>
+				<module>bojinx-processors</module>
+				<module>bojinx-utilities</module>
+				<module>bojinx-tests</module>
+			</modules>
+		</profile>
+	</profiles>
+
+	<!-- SVN -->
+	<scm>
+		<connection>scm:svn:http://svn.bojinx.com</connection>
+		<developerConnection>scm:svn:https://svn.bojinx.com</developerConnection>
+		<url>http://fisheye.bojinx.co.uk</url>
+	</scm>
+
+	<!-- Licence -->
+	<licenses>
+		<license>
+			<name>Apache Software License 2.0</name>
+			<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+			<distribution>repo</distribution>
+		</license>
+	</licenses>
+
+	<distributionManagement>
+		<repository>
+			<id>bojinx-releases</id>
+			<url>ftp://bojinx.co.uk/releases</url>
+			<uniqueVersion>false</uniqueVersion>
+		</repository>
+		<snapshotRepository>
+			<id>bojinx-snapshots</id>
+			<uniqueVersion>false</uniqueVersion>
+			<url>ftp://bojinx.co.uk/snapshots</url>
+		</snapshotRepository>
+		<site>
+			<id>bojinx-site</id>
+			<name>Bojinx site repository</name>
+			<url>ftp://www.bojinx.co.uk/site</url>
+		</site>
+	</distributionManagement>
+
+	<build>
+		<extensions>
+			<!-- Enabling the use of FTP -->
+			<extension>
+				<groupId>org.apache.maven.wagon</groupId>
+				<artifactId>wagon-ftp</artifactId>
+				<version>2.0</version>
+			</extension>
+		</extensions>
+
+		<!-- Site -->
+		<plugins>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>versions-maven-plugin</artifactId>
+				<version>1.2</version>
+				<configuration>
+					<generateBackupPoms>false</generateBackupPoms>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-site-plugin</artifactId>
+				<version>3.0</version>
+				<inherited>true</inherited>
+				<configuration>
+					<argLine>-Xmx1024m</argLine>
+					<outputEncoding>utf-8</outputEncoding>
+					<siteDirectory>src/site</siteDirectory>
+					<outputDirectory>target/site/</outputDirectory>
+					<generateSitemap>true</generateSitemap>
+				</configuration>
+			</plugin>
+
+			<!-- Apparat -->
+			<plugin>
+				<groupId>com.googlecode.apparat</groupId>
+				<artifactId>apparat-maven-plugin</artifactId>
+				<version>1.0-SNAPSHOT</version>
+				<executions>
+					<execution>
+						<id>tdsi-package</id>
+						<goals>
+							<goal>reducer</goal>
+							<goal>tdsi</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<mergeABC>false</mergeABC>
+					<sortCPool>false</sortCPool>
+					<mergeCF>false</mergeCF>
+					<alchemyExpansion>true</alchemyExpansion>
+					<inlineExpansion>true</inlineExpansion>
+					<macroExpansion>true</macroExpansion>
+					<lzma>false</lzma>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+	<!-- Reporting -->
+	<reporting>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-project-info-reports-plugin</artifactId>
+				<version>2.2</version>
+				<configuration>
+					<argLine>-Xmx1024m</argLine>
+				</configuration>
+			</plugin>
+		</plugins>
+	</reporting>
+
+	<!-- Repositories -->
+	<repositories>
+		<repository>
+			<id>bj</id>
+			<url>http://nexus.bojinx.co.uk/content/repositories/site</url>
+			<releases>
+				<enabled>true</enabled>
+				<updatePolicy>always</updatePolicy>
+			</releases>
+			<snapshots>
+				<enabled>false</enabled>
+				<updatePolicy>always</updatePolicy>
+			</snapshots>
+		</repository>
+		<repository>
+			<id>bjr</id>
+			<url>http://nexus.bojinx.co.uk/content/repositories/releases</url>
+			<releases>
+				<enabled>true</enabled>
+				<updatePolicy>always</updatePolicy>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+				<updatePolicy>always</updatePolicy>
+			</snapshots>
+		</repository>
+		<repository>
+			<id>bjt</id>
+			<url>http://nexus.bojinx.com/content/repositories/thirdparty</url>
+			<releases>
+				<enabled>true</enabled>
+				<updatePolicy>always</updatePolicy>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+				<updatePolicy>always</updatePolicy>
+			</snapshots>
+		</repository>
+		<repository>
+			<id>bs</id>
+			<url>http://nexus.bojinx.co.uk/content/repositories/snapshots</url>
+			<releases>
+				<enabled>true</enabled>
+				<updatePolicy>always</updatePolicy>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+				<updatePolicy>always</updatePolicy>
+			</snapshots>
+		</repository>
+		<repository>
+			<id>mj</id>
+			<url>http://repository.sonatype.org/content/groups/flexgroup/</url>
+			<releases>
+				<enabled>true</enabled>
+				<updatePolicy>always</updatePolicy>
+			</releases>
+			<snapshots>
+				<enabled>false</enabled>
+				<updatePolicy>always</updatePolicy>
+			</snapshots>
+		</repository>
+		<repository>
+			<id>mi</id>
+			<url>http://repository.sonatype.org/content/groups/public/</url>
+			<releases>
+				<enabled>true</enabled>
+				<updatePolicy>always</updatePolicy>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+				<updatePolicy>always</updatePolicy>
+			</snapshots>
+		</repository>
+	</repositories>
+	<pluginRepositories>
+		<pluginRepository>
+			<id>mj</id>
+			<url>http://repository.sonatype.org/content/groups/flexgroup</url>
+			<releases>
+				<enabled>true</enabled>
+				<updatePolicy>always</updatePolicy>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+				<updatePolicy>always</updatePolicy>
+			</snapshots>
+		</pluginRepository>
+		<pluginRepository>
+			<id>nx</id>
+			<name>Sonatype Nexus Snapshots</name>
+			<url>http://oss.sonatype.org/content/repositories/snapshots</url>
+			<releases>
+				<enabled>true</enabled>
+				<updatePolicy>always</updatePolicy>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+				<updatePolicy>always</updatePolicy>
+			</snapshots>
+		</pluginRepository>
+		<pluginRepository>
+			<id>mi</id>
+			<url>http://repository.sonatype.org/content/groups/public/</url>
+			<releases>
+				<enabled>true</enabled>
+				<updatePolicy>always</updatePolicy>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+				<updatePolicy>always</updatePolicy>
+			</snapshots>
+		</pluginRepository>
+		<pluginRepository>
+			<id>bjr</id>
+			<url>http://nexus.bojinx.co.uk/content/repositories/releases</url>
+			<releases>
+				<enabled>true</enabled>
+				<updatePolicy>always</updatePolicy>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+				<updatePolicy>always</updatePolicy>
+			</snapshots>
+		</pluginRepository>
+		<pluginRepository>
+			<id>bjs</id>
+			<url>http://nexus.bojinx.co.uk/content/repositories/snapshots</url>
+			<releases>
+				<enabled>true</enabled>
+				<updatePolicy>always</updatePolicy>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+				<updatePolicy>always</updatePolicy>
+			</snapshots>
+		</pluginRepository>
+	</pluginRepositories>
+
+	<!-- Dependencies -->
+	<dependencies>
+		<!-- External dependencies -->
+<!-- 		<dependency> -->
+<!-- 			<groupId>com.adobe.flex.framework</groupId> -->
+<!-- 			<artifactId>authoringsupport</artifactId> -->
+<!-- 			<version>${flex.sdk.version}</version> -->
+<!-- 			<type>swc</type> -->
+<!-- 			<scope>external</scope> -->
+<!-- 		</dependency> -->
+<!-- 		<dependency> -->
+<!-- 			<groupId>com.adobe.flex.framework</groupId> -->
+<!-- 			<artifactId>osmf</artifactId> -->
+<!-- 			<version>${flex.sdk.version}</version> -->
+<!-- 			<type>swc</type> -->
+<!-- 			<scope>external</scope> -->
+<!-- 		</dependency> -->
+<!-- 		<dependency> -->
+<!-- 			<groupId>com.adobe.flex.framework</groupId> -->
+<!-- 			<artifactId>flash-integration</artifactId> -->
+<!-- 			<version>${flex.sdk.version}</version> -->
+<!-- 			<type>swc</type> -->
+<!-- 			<scope>external</scope> -->
+<!-- 		</dependency> -->
+<!-- 		<dependency> -->
+<!-- 			<groupId>com.adobe.flex.framework</groupId> -->
+<!-- 			<artifactId>framework</artifactId> -->
+<!-- 			<version>${flex.sdk.version}</version> -->
+<!-- 			<type>swc</type> -->
+<!-- 			<scope>external</scope> -->
+<!-- 		</dependency> -->
+<!-- 		<dependency> -->
+<!-- 			<groupId>com.adobe.flex.framework</groupId> -->
+<!-- 			<artifactId>rpc</artifactId> -->
+<!-- 			<version>${flex.sdk.version}</version> -->
+<!-- 			<type>swc</type> -->
+<!-- 			<scope>external</scope> -->
+<!-- 		</dependency> -->
+<!-- 		<dependency> -->
+<!-- 			<groupId>com.adobe.flex.framework</groupId> -->
+<!-- 			<artifactId>charts</artifactId> -->
+<!-- 			<version>${flex.sdk.version}</version> -->
+<!-- 			<type>swc</type> -->
+<!-- 			<scope>external</scope> -->
+<!-- 		</dependency> -->
+<!-- 		<dependency> -->
+<!-- 			<groupId>com.adobe.flex.framework</groupId> -->
+<!-- 			<artifactId>mx</artifactId> -->
+<!-- 			<version>${flex.sdk.version}</version> -->
+<!-- 			<type>swc</type> -->
+<!-- 			<scope>external</scope> -->
+<!-- 		</dependency> -->
+<!-- 		<dependency> -->
+<!-- 			<groupId>com.adobe.flex.framework</groupId> -->
+<!-- 			<artifactId>spark</artifactId> -->
+<!-- 			<version>${flex.sdk.version}</version> -->
+<!-- 			<type>swc</type> -->
+<!-- 			<scope>external</scope> -->
+<!-- 		</dependency> -->
+<!-- 		<dependency> -->
+<!-- 			<groupId>com.adobe.flex.framework</groupId> -->
+<!-- 			<artifactId>advancedgrids</artifactId> -->
+<!-- 			<version>${flex.sdk.version}</version> -->
+<!-- 			<type>swc</type> -->
+<!-- 			<scope>external</scope> -->
+<!-- 		</dependency> -->
+<!-- 		<dependency> -->
+<!-- 			<groupId>com.adobe.flex.framework</groupId> -->
+<!-- 			<artifactId>sparkskins</artifactId> -->
+<!-- 			<version>${flex.sdk.version}</version> -->
+<!-- 			<type>swc</type> -->
+<!-- 			<scope>external</scope> -->
+<!-- 		</dependency> -->
+<!-- 		<dependency> -->
+<!-- 			<groupId>com.adobe.flex.framework</groupId> -->
+<!-- 			<artifactId>spark_dmv</artifactId> -->
+<!-- 			<version>${flex.sdk.version}</version> -->
+<!-- 			<type>swc</type> -->
+<!-- 			<scope>external</scope> -->
+<!-- 		</dependency> -->
+
+		<!-- standard dependencies -->
+		<dependency>
+			<groupId>com.adobe.flex.framework</groupId>
+			<artifactId>flex-framework</artifactId>
+			<version>${flex.sdk.version}</version>
+			<type>pom</type>
+		</dependency>
+		<dependency>
+			<groupId>com.bojinx.skins</groupId>
+			<artifactId>bojinx-site-skin</artifactId>
+			<version>1.0</version>
+		</dependency>
+		<dependency>
+		  <groupId>com.bojinx</groupId>
+		  <artifactId>manifest</artifactId>
+		  <version>1.0.1-RELEASE</version>
+		</dependency>
+	</dependencies>
+</project>

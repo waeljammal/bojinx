@@ -1,0 +1,425 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!---
+@manifest
+-->
+<s:Skin xmlns:fb="http://ns.adobe.com/flashbuilder/2009"
+		xmlns:fx="http://ns.adobe.com/mxml/2009"
+		xmlns:gr="mx.graphics.*"
+		xmlns:mx="library://ns.adobe.com/flex/mx"
+		xmlns:s="library://ns.adobe.com/flex/spark"
+		alpha.disabled="1" width="100%" height="100%">
+
+	<fx:Metadata>
+		<![CDATA[ 
+		/** 
+		* @copy spark.skins.spark.ApplicationSkin#hostComponent
+		*/
+		[HostComponent("com.bojinx.dialog.ui.DialogBubbleWindow")]
+		]]>
+	</fx:Metadata>
+
+	<fx:Script>
+		<![CDATA[
+			import com.bojinx.dialog.util.Bubble;
+			import mx.core.EdgeMetrics;
+			import spark.filters.DropShadowFilter;
+			
+			
+			/*============================================================================*/
+			/*= PUBLIC PROPERTIES                                                         */
+			/*============================================================================*/
+			
+			private var _borderMetrics:EdgeMetrics;
+			
+			public function get borderMetrics():EdgeMetrics
+			{
+				if ( _borderMetrics )
+				{
+					return _borderMetrics;
+				}
+				var styleLegPoint:Point = this.parsePoint( this.getStyle( "legPoint" ));
+				var borderThickness:Number = getStyle( "borderThickness" );
+				var drawDirection:String = this.getLegPosition( styleLegPoint );
+				var legSize:Number = this.getStyle( "legSize" );
+				
+				switch ( drawDirection )
+				{
+					case "LEFT":
+						_borderMetrics = new EdgeMetrics( borderThickness + legSize, borderThickness, borderThickness, borderThickness );
+						break;
+					case "RIGHT":
+						_borderMetrics = new EdgeMetrics( borderThickness, borderThickness, borderThickness + legSize, borderThickness );
+						break;
+					case "TOP_LEFT":
+					case "TOP_RIGHT":
+					case "TOP":
+						_borderMetrics = new EdgeMetrics( borderThickness, borderThickness + legSize, borderThickness, borderThickness );
+						break;
+					case "BOTTOM_RIGHT":
+					case "BOTTOM_LEFT":
+					case "BOTTOM":
+						_borderMetrics = new EdgeMetrics( borderThickness, borderThickness, borderThickness, borderThickness + legSize );
+						break;
+					default:
+						_borderMetrics = new EdgeMetrics( borderThickness, borderThickness, borderThickness, borderThickness );
+				}
+				return _borderMetrics;
+			}
+			
+			
+			/*============================================================================*/
+			/*= PROTECTED METHODS                                                         */
+			/*============================================================================*/
+			
+			protected function drawInsidePoint( leg:Point ):void
+			{
+//				graphics.beginFill( 0xff0000, , this.getStyle( "alpha" ) );
+//				graphics.drawCircle( leg.x, leg.y, 5 );
+//				graphics.endFill();
+			}
+			
+			protected function drawLegAtBottomLeft( leg:Point, box:Point ):void
+			{
+				var borderThickness:Number = getStyle( "borderThickness" );
+				var legSize:Number = this.getStyle( "legSize" );
+				graphics.beginFill( this.getStyle( "backgroundColor" ), this.getStyle( "backgroundAlpha" ));
+				graphics.lineStyle( borderThickness, this.getStyle( "backgroundColor" ), this.getStyle( "backgroundAlpha" ));
+				graphics.moveTo( leg.x, leg.y );
+				graphics.lineTo( box.x, box.y - legSize );
+				graphics.lineTo( box.x + legSize, box.y );
+				graphics.lineTo( leg.x, leg.y );
+				graphics.endFill();
+				graphics.lineStyle( borderThickness, this.getStyle( "borderColor" ), this.getStyle( "backgroundAlpha" ));
+				graphics.moveTo( leg.x, leg.y );
+				graphics.lineTo( box.x, box.y - legSize );
+				graphics.moveTo( leg.x, leg.y );
+				graphics.lineTo( box.x + legSize, box.y );
+			}
+			
+			protected function drawLegAtBottomRight( leg:Point, box:Point ):void
+			{
+				var borderThickness:Number = getStyle( "borderThickness" );
+				var legSize:Number = this.getStyle( "legSize" );
+				graphics.beginFill( this.getStyle( "backgroundColor" ), this.getStyle( "backgroundAlpha" ));
+				graphics.lineStyle( borderThickness, this.getStyle( "backgroundColor" ), this.getStyle( "backgroundAlpha" ));
+				graphics.moveTo( leg.x, leg.y );
+				graphics.lineTo( width - legSize, box.y );
+				graphics.lineTo( width, box.y - legSize );
+				graphics.lineTo( leg.x, leg.y );
+				graphics.endFill();
+				graphics.lineStyle( borderThickness, this.getStyle( "borderColor" ), this.getStyle( "backgroundAlpha" ));
+				graphics.moveTo( leg.x, leg.y );
+				graphics.lineTo( width - legSize, box.y );
+				graphics.moveTo( leg.x, leg.y );
+				graphics.lineTo( width, box.y - legSize );
+			}
+			
+			protected function drawLegAtLeftOrRight( leg:Point, box:Point ):void
+			{
+				var borderThickness:Number = getStyle( "borderThickness" );
+				var legSize:Number = this.getStyle( "legSize" );
+				var cornerRadius:Number = this.getStyle( "cornerRadius" );
+				
+				if ( box.y < cornerRadius )
+				{
+					box.y = cornerRadius;
+				}
+				
+				if ( box.y > height - cornerRadius )
+				{
+					box.y = height - cornerRadius;
+				}
+				graphics.beginFill( this.getStyle( "backgroundColor" ), this.getStyle( "backgroundAlpha" ));
+				graphics.moveTo( leg.x, leg.y );
+				graphics.lineTo( box.x, box.y - legSize );
+				graphics.lineTo( box.x, box.y + legSize );
+				graphics.lineTo( leg.x, leg.y );
+				graphics.endFill();
+				graphics.lineStyle( 0, this.getStyle( "backgroundColor" ), this.getStyle( "backgroundAlpha" ));
+				graphics.moveTo( box.x, box.y - legSize );
+				graphics.lineTo( box.x, box.y + legSize );
+			}
+			
+			protected function drawLegAtTopLeft( leg:Point, box:Point ):void
+			{
+				var borderThickness:Number = getStyle( "borderThickness" );
+				var legSize:Number = this.getStyle( "legSize" );
+				graphics.beginFill( this.getStyle( "backgroundColor" ), this.getStyle( "backgroundAlpha" ));
+				graphics.lineStyle( borderThickness, this.getStyle( "backgroundColor" ), this.getStyle( "backgroundAlpha" ));
+				graphics.moveTo( leg.x, leg.y );
+				graphics.lineTo( box.x, box.y + legSize );
+				graphics.lineTo( box.x + legSize, box.y );
+				graphics.lineTo( leg.x, leg.y );
+				graphics.endFill();
+				graphics.lineStyle( borderThickness, this.getStyle( "borderColor" ), this.getStyle( "backgroundAlpha" ));
+				graphics.moveTo( leg.x, leg.y );
+				graphics.lineTo( box.x, box.y + legSize );
+				graphics.moveTo( leg.x, leg.y );
+				graphics.lineTo( box.x + legSize, box.y );
+			}
+			
+			protected function drawLegAtTopOrBottom( leg:Point, box:Point ):void
+			{
+				var borderThickness:Number = getStyle( "borderThickness" );
+				var legSize:Number = this.getStyle( "legSize" );
+				
+				if (( box.x + legSize ) > ( width - legSize ))
+				{
+					box.x = width - ( legSize * 2 );
+				}
+				else if (( box.x - legSize ) < legSize )
+				{
+					box.x = legSize * 2;
+				}
+				
+//				trace( leg.y );
+				
+//				graphics.beginFill( this.getStyle( "backgroundColor" ), this.getStyle( "backgroundAlpha" ));
+				graphics.lineStyle( borderThickness, this.getStyle( "borderColor" ), this.getStyle( "backgroundAlpha" ));
+				graphics.moveTo( leg.x, leg.y );
+				graphics.lineTo( box.x - legSize, box.y );
+				graphics.lineTo( box.x + legSize, box.y );
+//				graphics.lineTo( leg.x, leg.y );
+				graphics.endFill();
+//				graphics.lineStyle( borderThickness, this.getStyle( "borderColor" ), this.getStyle( "backgroundAlpha" ));
+//				graphics.moveTo( leg.x, leg.y );
+//				graphics.lineTo( box.x - legSize, box.y );
+//				graphics.moveTo( leg.x, leg.y );
+//				graphics.lineTo( box.x + legSize, box.y );
+//				graphics.endFill();
+			}
+			
+			protected function drawLegAtTopRight( leg:Point, box:Point ):void
+			{
+				var borderThickness:Number = getStyle( "borderThickness" );
+				var legSize:Number = this.getStyle( "legSize" );
+				graphics.beginFill( this.getStyle( "backgroundColor" ), this.getStyle( "backgroundAlpha" ));
+//				graphics.lineStyle( borderThickness, this.getStyle( "backgroundColor" ), this.getStyle( "backgroundAlpha" ));
+				graphics.lineStyle( borderThickness, this.getStyle( "borderColor" ), this.getStyle( "backgroundAlpha" ));
+//				graphics.moveTo( leg.x, leg.y );
+//				graphics.lineTo( width - legSize, box.y );
+//				graphics.lineTo( width, box.y + legSize );
+//				graphics.lineTo( leg.x, leg.y );
+//				graphics.endFill();
+//				graphics.moveTo( leg.x, leg.y );
+//				graphics.lineTo( width - legSize, box.y );
+//				graphics.moveTo( leg.x, leg.y );
+//				graphics.lineTo( width, box.y + legSize );
+			}
+			
+			protected function getBoundary( legPoint:Point ):Point
+			{
+				var legPos:String = this.getLegPosition( legPoint );
+				var realLegPoint:Point = new Point( legPoint.x - x, legPoint.y - y );
+				
+				if ( legPos == "LEFT" )
+				{
+					return new Point( 0, realLegPoint.y );
+				}
+				else if ( legPos == "TOP_LEFT" )
+				{
+					return new Point( 0, 0 );
+				}
+				else if ( legPos == "BOTTOM_LEFT" )
+				{
+					return new Point( 0, height );
+				}
+				else if ( legPos == "TOP" )
+				{
+					return new Point( realLegPoint.x, 0 );
+				}
+				else if ( legPos == "TOP_RIGHT" )
+				{
+					return new Point( width, 0 );
+				}
+				else if ( legPos == "RIGHT" )
+				{
+					return new Point( width, realLegPoint.y );
+				}
+				else if ( legPos == "BOTTOM_RIGHT" )
+				{
+					return new Point( width, height );
+				}
+				else if ( legPos == "BOTTOM" )
+				{
+					return new Point( realLegPoint.x, height );
+				}
+				else
+				{
+					return legPoint;
+				}
+			}
+			
+			protected function getLegPosition( legPoint:Point ):String
+			{
+				var rx:Number = x + width;
+				var by:Number = y + height;
+				
+				if ( legPoint.x < x && legPoint.y > y && legPoint.y < by )
+				{
+					return "LEFT";
+				}
+				else if ( legPoint.x > x && legPoint.x < rx && legPoint.y < y )
+				{
+					return "TOP";
+				}
+				else if ( legPoint.x > rx && legPoint.y > y && legPoint.y < by )
+				{
+					return "RIGHT";
+				}
+				else if ( legPoint.x > x && legPoint.x < rx && legPoint.y > by )
+				{
+					return "BOTTOM";
+				}
+				else if ( legPoint.x < x && legPoint.y < y )
+				{
+					return "TOP_LEFT";
+				}
+				else if ( legPoint.x < x && legPoint.y > by )
+				{
+					return "BOTTOM_LEFT";
+				}
+				else if ( legPoint.x > rx && legPoint.y < y )
+				{
+					return "TOP_RIGHT";
+				}
+				else if ( legPoint.x > rx && legPoint.y > by )
+				{
+					return "BOTTOM_RIGHT";
+				}
+				else
+				{
+					return "INSIDE";
+				}
+			}
+			
+			protected function legPointXIsRealPoint():Boolean
+			{
+				var val:Array = this.getStyle( "legPoint" );
+				var strX:String = val[ 0 ];
+				return strX.indexOf( "L" ) != -1;
+			}
+			
+			protected function legPointYIsRealPoint():Boolean
+			{
+				var val:Array = this.getStyle( "legPoint" );
+				var strX:String = val[ 1 ];
+				return strX.indexOf( "L" ) != -1;
+			}
+			
+			protected function parsePoint( val:Array ):Point
+			{
+				var result:Point = new Point( 0, 0 );
+				var strX:String = val[ 0 ]
+				
+				if ( strX.indexOf( "L" ) != -1 )
+				{
+					strX = strX.substr( strX.indexOf( "L" ) + 1 );
+					result.x = x + Number( strX );
+				}
+				else
+				{
+					result.x = Number( strX );
+				}
+				var strY:String = val[ 1 ];
+				
+				if ( strY.indexOf( "L" ) != -1 )
+				{
+					strY = strY.substr( strY.indexOf( "L" ) + 1 );
+					result.y = y + Number( strY );
+				}
+				else
+				{
+					result.y = Number( strY );
+				}
+				
+				return result;
+			}
+			
+			override protected function updateDisplayList( unscaledWidth:Number, unscaledHeight:Number ):void
+			{
+//				graphics.clear();
+//				
+				var dropShadowEnabled:Boolean = this.getStyle( "dropShadowEnabled" );
+//				var borderThickness:Number = this.getStyle( "borderThickness" );
+//				var cornerRadius:Number = this.getStyle( "cornerRadius" );
+//				
+//				if ( hostComponent.session )
+//				{
+////					hostComponent.dialogChanged( hostComponent.session );
+//				}
+//				
+//				if ( parent != null )
+//				{
+//					var styleLegPoint:Point = this.parsePoint( this.getStyle( "legPoint" ));
+//					var legSize:Number = this.getStyle( "legSize" );
+//					
+//					if ( styleLegPoint != null && parent != null )
+//					{
+//						var realLegPoint:Point = new Point( styleLegPoint.x - x, styleLegPoint.y - y );
+//						
+//						var boxMiddlePointer:Point = new Point( x + ( width / 2 ),
+//																y + ( height / 2 ));
+//						
+//						var boundaryPointer:Point = this.getBoundary( styleLegPoint );
+//						var drawDirection:String = this.getLegPosition( styleLegPoint );
+//						
+//						switch ( drawDirection )
+//						{
+//							case "BOTTOM":
+//							case "TOP":
+//								drawLegAtTopOrBottom( realLegPoint, boundaryPointer );
+//								break;
+//							case "RIGHT":
+//							case "LEFT":
+//								drawLegAtLeftOrRight( realLegPoint, boundaryPointer );
+//								break;
+//							case "TOP_RIGHT":
+//								drawLegAtTopRight( realLegPoint, boundaryPointer );
+//								break;
+//							case "BOTTOM_RIGHT":
+//								drawLegAtBottomRight( realLegPoint, boundaryPointer );
+//								break;
+//							case "TOP_LEFT":
+//								drawLegAtTopLeft( realLegPoint, boundaryPointer );
+//								break;
+//							case "BOTTOM_LEFT":
+//								drawLegAtBottomLeft( realLegPoint, boundaryPointer );
+//								break;
+//							case "INSIDE":
+//								drawInsidePoint( realLegPoint );
+//						}
+//					}
+//				}
+//				
+				if ( dropShadowEnabled )
+					this.filters = [ new spark.filters.DropShadowFilter( 4, 45, 0, .50 )];
+//				
+//				graphics.lineStyle( borderThickness, this.getStyle( "borderColor" ), this.getStyle( "borderAlpha" ), true );
+//				graphics.beginFill( this.getStyle( "backgroundColor" ), this.getStyle( "backgroundAlpha" ));
+//				//				graphics.drawRoundRect( 0, 0, unscaledWidth, unscaledHeight, cornerRadius, cornerRadius );
+//				
+//				graphics.endFill();
+				
+				super.updateDisplayList( unscaledWidth, unscaledHeight );
+			}
+		]]>
+	</fx:Script>
+
+	<s:states>
+		<mx:State name="normal" />
+		<mx:State name="disabled" />
+	</s:states>
+	<!--
+		 Note: setting the minimum size to 0 here so that changes to the host component's
+		 size will not be thwarted by this skin part's minimum size.   This is a compromise,
+		 more about it here: http://bugs.adobe.com/jira/browse/SDK-21143
+	-->
+	<!--- @copy spark.components.SkinnableContainer#contentGroup -->
+	<s:Group id="contentGroup" left="0" right="0" top="0" bottom="0" minWidth="0" minHeight="0">
+		<s:layout>
+			<s:BasicLayout />
+		</s:layout>
+	</s:Group>
+
+</s:Skin>

@@ -1,0 +1,12 @@
+<?xml version="1.0"?><componentPackage>
+  <component id="SinglePackageNameObjectSelector" class="com.bojinx.display.core.selector.SinglePackageNameObjectSelector"/>
+  <component id="ViewManager" class="com.bojinx.display.core.ViewManager"/>
+  <component id="DisplayObjectAnnotationProcessor" class="com.bojinx.display.DisplayObjectAnnotationProcessor"/>
+  <component id="DisplayObjectProcessor" class="com.bojinx.display.DisplayObjectProcessor"/>
+  <component id="AllowAllObjectSelector" class="org.as3commons.stageprocessing.impl.selector.AllowAllObjectSelector"/>
+  <component id="ClassNameBasedObjectSelector" class="org.as3commons.stageprocessing.impl.selector.ClassNameBasedObjectSelector"/>
+  <component id="ComposedObjectSelector" class="org.as3commons.stageprocessing.impl.selector.ComposedObjectSelector"/>
+  <component id="NameBasedObjectSelector" class="org.as3commons.stageprocessing.impl.selector.NameBasedObjectSelector"/>
+  <component id="PropertyValueBasedObjectSelector" class="org.as3commons.stageprocessing.impl.selector.PropertyValueBasedObjectSelector"/>
+  <component id="TypeBasedObjectSelector" class="org.as3commons.stageprocessing.impl.selector.TypeBasedObjectSelector"/>
+</componentPackage>

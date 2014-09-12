@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<annotations version="1.0">
+
+	<metadata name="Inject" description="Injects a Managed Object">
+		<context name="method">
+			<attribute name="id" type="String" required="false" />
+			<attribute name="ids" type="Array" required="false" />
+			<attribute name="property" type="String" required="false" />
+			<attribute name="mode" type="String" required="false" values="oneWay" />
+			<attribute name="required" type="Boolean" hint="boolean" required="false" values="true,false" />
+			<attribute name="priority" type="int" required="false" />
+		</context>
+		<context name="getter">
+			<attribute name="id" type="String" required="false" />
+			<attribute name="property" type="String" required="false" />
+			<attribute name="mode" type="String" required="false" values="oneWay,twoWay" />
+			<attribute name="required" type="Boolean" hint="boolean" required="false" values="true,false" />
+			<attribute name="priority" type="int" required="false" />
+		</context>
+		<context name="setter">
+			<attribute name="id" type="String" required="false" />
+			<attribute name="property" type="String" required="false" />
+			<attribute name="mode" type="String" required="false" values="oneWay,twoWay" />
+			<attribute name="required" type="Boolean" hint="boolean" required="false" values="true,false" />
+			<attribute name="priority" type="int" required="false" />
+		</context>
+		<context name="variable">
+			<attribute name="id" type="String" required="false" />
+			<attribute name="property" type="String" required="false" />
+			<attribute name="mode" type="String" required="false" values="oneWay,twoWay" />
+			<attribute name="required" type="Boolean" hint="boolean" required="false" values="true,false" />
+			<attribute name="priority" type="int" required="false" />
+		</context>
+	</metadata>
+
+</annotations>

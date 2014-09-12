@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<annotations version="1.0">
+
+	<metadata name="MessageDispatcher" description="Injects a Message Dispatcher Function">
+		<context name="method" />
+		<context name="getter" />
+		<context name="setter" />
+		<context name="variable" />
+	</metadata>
+
+	<metadata name="MessageInterceptor" description="Allows you to Intercept a Message">
+		<context name="method">
+			<attribute name="name" type="String" hint="optional topic" required="false" />
+			<attribute name="type" type="String" hint="optional class type to use" />
+			<attribute name="priority" type="int" hint="queue priority" />
+		</context>
+	</metadata>
+
+	<metadata name="Message" description="Allows you to receive a Message">
+		<context name="method">
+			<attribute name="name" type="String" hint="optional topic" required="false" />
+			<attribute name="type" type="String" hint="optional class type to use" />
+			<attribute name="priority" type="int" hint="queue priority" />
+		</context>
+	</metadata>
+
+	<metadata name="RouteEvents" description="Allows you to receive a Message">
+		<context name="class">
+			<attribute name="events" type="Array" hint="optional array of event names" required="false" />
+		</context>
+	</metadata>
+
+</annotations>

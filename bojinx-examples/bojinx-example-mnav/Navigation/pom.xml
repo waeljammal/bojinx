@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.adobe.cairngorm</groupId>
+		<artifactId>libraries</artifactId>
+		<version>3.0.22-SNAPSHOT</version>
+		<relativePath>../pom.xml</relativePath>
+	</parent>
+
+	<version>1.8-SNAPSHOT</version>
+	<artifactId>navigation</artifactId>
+	<packaging>swc</packaging>
+	<name>${project.groupId} ${project.artifactId} ${project.version}</name>
+	<description>${project.groupId} ${project.artifactId} ${project.version}</description>
+
+	<dependencies>
+		<dependency>
+			<groupId>asmock</groupId>
+			<artifactId>asmock</artifactId>
+			<type>swc</type>			
+		</dependency>
+		<dependency>
+			<groupId>asmock</groupId>
+			<artifactId>asmock-flexunit4.1</artifactId>
+			<type>swc</type>			
+		</dependency>
+		<dependency>
+			<groupId>org.hamcrest</groupId>
+			<artifactId>hamcrest-as3</artifactId>
+			<type>swc</type>			
+		</dependency>
+		<dependency>
+			<groupId>com.adobe.flexunit</groupId>
+			<artifactId>flexunit</artifactId>
+			<type>swc</type>			
+		</dependency>
+	</dependencies>
+
+	<build>
+		<sourceDirectory>src</sourceDirectory>
+		<testSourceDirectory>test</testSourceDirectory>
+
+		<plugins>
+
+			<plugin>
+				<groupId>org.sonatype.flexmojos</groupId>
+				<artifactId>flexmojos-maven-plugin</artifactId>
+				<version>${flex-mojos.version}</version>
+				<dependencies>
+					<dependency>
+						<groupId>com.adobe.flex</groupId>
+						<artifactId>compiler</artifactId>
+						<version>${flex.sdk.version}</version>
+						<type>pom</type>
+					</dependency>
+				</dependencies>
+				<extensions>true</extensions>
+
+
+				<configuration>
+
+					<debug>${flex-debug}</debug>
+					<optimize>${flex-optimize}</optimize>
+					<verboseStacktraces>${flex-verbose-stacktraces}</verboseStacktraces>
+					<targetPlayer>${player.version}</targetPlayer>
+					<includeSources>
+						<param>${project.build.sourceDirectory}</param>
+					</includeSources>
+					<allowSourcePathOverlap>true</allowSourcePathOverlap>
+					<showWarnings>true</showWarnings>
+
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>

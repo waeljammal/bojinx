@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<flexLibProperties includeAllClasses="true" useMultiPlatformConfig="false" version="3">
+  <includeClasses>
+    <classEntry path="com.bojinx.system.context.mxml.ApplicationContext"/>
+    <classEntry path="com.bojinx.system.context.ApplicationContext"/>
+    <classEntry path="com.bojinx.utils.GUID"/>
+    <classEntry path="com.bojinx.api.context.config.IBeans"/>
+    <classEntry path="com.bojinx.api.context.config.IConfigItem"/>
+    <classEntry path="com.bojinx.system.context.director.ContextLoadingDirector"/>
+    <classEntry path="com.bojinx.api.context.IApplicationContext"/>
+    <classEntry path="com.bojinx.api.context.ext.IExtension"/>
+    <classEntry path="com.bojinx.utils.logging.Logger"/>
+    <classEntry path="com.bojinx.api.context.ext.ILoggerExtension"/>
+    <classEntry path="com.bojinx.api.context.config.IBean"/>
+    <classEntry path="com.bojinx.system.context.event.ContextEvent"/>
+    <classEntry path="com.bojinx.cache.definition.ObjectDefinition"/>
+    <classEntry path="com.bojinx.cache.store.ProcessorRegistry"/>
+    <classEntry path="com.bojinx.system.context.builder.MODefinitionBuilder"/>
+    <classEntry path="com.bojinx.cache.definition.ObjectDefinitionInfo"/>
+    <classEntry path="com.bojinx.api.context.config.support.ILazySupport"/>
+    <classEntry path="com.bojinx.system.build.definition.ObjectDefinitionProcessorDecorator"/>
+    <classEntry path="com.bojinx.api.context.loader.IConfigLoader"/>
+    <classEntry path="com.bojinx.api.context.loader.impl.ConfigurationLoaderBase"/>
+    <classEntry path="com.bojinx.system.build.resolve.ObjectResolverFactory"/>
+    <classEntry path="com.bojinx.system.build.resolve.ObjectResolver"/>
+    <classEntry path="com.bojinx.cache.store.ResolverRegistry"/>
+    <classEntry path="com.bojinx.system.build.resolve.support.MethodResolver"/>
+    <classEntry path="com.bojinx.system.build.resolve.support.PropertyValueResolver"/>
+    <classEntry path="com.bojinx.system.build.resolve.support.MethodParameterReferenceResolver"/>
+    <classEntry path="com.bojinx.system.build.definition.ObjectDefinitionFactory"/>
+    <classEntry path="com.bojinx.system.build.resolve.support.ResolverReference"/>
+    <classEntry path="com.bojinx.api.processor.display.IStageProcessor"/>
+    <classEntry path="com.bojinx.system.display.DisplayObjectRouter"/>
+    <classEntry path="com.bojinx.api.processor.IProcessorConfiguration"/>
+    <classEntry path="com.bojinx.cache.store.ContextRegistry"/>
+    <classEntry path="com.bojinx.system.display.DisplayProcessingRegistry"/>
+    <classEntry path="com.bojinx.system.context.loaders.extensions.ExtentionLoader"/>
+    <classEntry path="com.bojinx.system.message.MessageBus"/>
+    <classEntry path="com.bojinx.system.processor.queue.ProcessorQueue"/>
+    <classEntry path="com.bojinx.system.processor.queue.ProcessorQueueBuilder"/>
+    <classEntry path="com.bojinx.system.context.director.BeanLoadingDirector"/>
+    <classEntry path="com.bojinx.cache.store.PendingProcessingRegistry"/>
+    <classEntry path="com.bojinx.api.context.config.support.IBeanReferenceSupport"/>
+    <classEntry path="com.bojinx.api.context.config.support.IAutoDetectBeans"/>
+    <classEntry path="com.bojinx.system.message.support.Scope"/>
+    <classEntry path="com.bojinx.cache.store.MessageRegistry"/>
+    <classEntry path="com.bojinx.included.BuiltInFeatureProcessor"/>
+    <classEntry path="com.bojinx.included.operation.BuiltInFeatureOperation"/>
+    <classEntry path="com.bojinx.included.meta.ILifeCyleMetadata"/>
+    <classEntry path="com.bojinx.system.cache.definition.MergedMetaDefinition"/>
+    <classEntry path="com.bojinx.api.processor.metadata.IMetaDefinition"/>
+    <classEntry path="com.bojinx.api.constants.ProcessorQueueMode"/>
+    <classEntry path="com.bojinx.system.processor.event.ProcessorQueueEvent"/>
+    <classEntry path="com.bojinx.system.processor.event.ProcessorQueueFaultEvent"/>
+    <classEntry path="com.bojinx.system.cache.store.BeanRegistry"/>
+    <classEntry path="com.bojinx.system.context.config.ResolvableBean"/>
+    <classEntry path="com.bojinx.api.context.config.support.IBeanFactory"/>
+  </includeClasses>
+  <includeResources>
+    <resourceEntry destPath="design.xml" sourcePath="design.xml"/>
+    <resourceEntry destPath="metadata.xml" sourcePath="metadata.xml"/>
+    <resourceEntry destPath="bojinx-manifest.xml" sourcePath="bojinx-manifest.xml"/>
+  </includeResources>
+  <namespaceManifests>
+    <namespaceManifestEntry manifest="bojinx-manifest.xml" namespace="http://www.rsnewmedia.co.uk/bojinx/"/>
+  </namespaceManifests>
+</flexLibProperties>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<flexLibProperties includeAllClasses="true" useMultiPlatformConfig="false" version="3">
+  <includeClasses>
+    <classEntry path="com.bojinx.mnav.MNavProcessor"/>
+    <classEntry path="com.bojinx.mnav.operation.MNavProcessorOperation"/>
+    <classEntry path="com.bojinx.mnav.meta.WayPointMetadata"/>
+    <classEntry path="com.bojinx.mnav.core.cache.MNavViewRegistry"/>
+    <classEntry path="com.bojinx.mnav.core.constants.MNavCacheID"/>
+    <classEntry path="com.bojinx.mnav.util.NavUtil"/>
+    <classEntry path="com.bojinx.mnav.core.task.StateAnimationTask"/>
+    <classEntry path="com.bojinx.mnav.config.SiteMap"/>
+    <classEntry path="com.bojinx.mnav.config.Location"/>
+    <classEntry path="com.bojinx.mnav.config.ILocationChild"/>
+    <classEntry path="com.bojinx.mnav.core.adapter.MNavMessageAdapter"/>
+    <classEntry path="com.bojinx.mnav.core.message.NavigationMessage"/>
+    <classEntry path="com.bojinx.mnav.core.adapter.IMnavAdapter"/>
+    <classEntry path="com.bojinx.mnav.core.task.EnterTask"/>
+    <classEntry path="com.bojinx.mnav.core.cache.data.ViewEffectFactory"/>
+    <classEntry path="com.bojinx.mnav.core.effect.TweenMaxEffect"/>
+    <classEntry path="com.bojinx.mnav.meta.RequestMappingMetadata"/>
+    <classEntry path="com.bojinx.mnav.util.StringUtils"/>
+    <classEntry path="com.bojinx.mnav.core.effect.EffectLink"/>
+    <classEntry path="com.bojinx.mnav.core.waypoint.WaypointHandler"/>
+    <classEntry path="com.bojinx.mnav.core.waypoint.CurrentStateWaypoint"/>
+    <classEntry path="com.bojinx.mnav.core.manager.NavigationController"/>
+    <classEntry path="com.bojinx.mnav.core.waypoint.StateDestination"/>
+    <classEntry path="com.bojinx.mnav.core.cache.DestinationRegistry"/>
+    <classEntry path="com.bojinx.mnav.core.constants.Action"/>
+    <classEntry path="com.bojinx.mnav.core.manager.EnterAndExitInvoker"/>
+    <classEntry path="com.bojinx.mnav.core.manager.NavigationTaskGenerationDispatcher"/>
+    <classEntry path="com.bojinx.mnav.core.message.InternalDestinationMessage"/>
+    <classEntry path="com.bojinx.mnav.core.message.EffectInfo"/>
+    <classEntry path="com.bojinx.mnav.core.message.NavigationChangeMessage"/>
+    <classEntry path="com.bojinx.mnav.core.cache.data.ViewEffect"/>
+    <classEntry path="com.bojinx.mnav.core.tasks.DispatchEnterTask"/>
+    <classEntry path="com.bojinx.mnav.core.tasks.DispatchExitTask"/>
+    <classEntry path="com.bojinx.mnav.core.tasks.SwitchStateTask"/>
+    <classEntry path="com.bojinx.mnav.core.tasks.PlayExitEffectTask"/>
+    <classEntry path="com.bojinx.mnav.core.tasks.PlayEnterEffectTask"/>
+    <classEntry path="com.bojinx.mnav.core.tasks.StartNewEffectQueueTask"/>
+    <classEntry path="com.bojinx.mnav.core.tasks.shared.StateModel"/>
+    <classEntry path="com.bojinx.mnav.core.constants.TaskPriority"/>
+    <classEntry path="com.bojinx.mnav.core.tasks.DispatchFinalDestinationTask"/>
+    <classEntry path="com.bojinx.mnav.core.message.NavigationCompleteMessage"/>
+    <classEntry path="com.bojinx.mnav.core.tasks.shared.SortableTask"/>
+  </includeClasses>
+  <includeResources/>
+  <namespaceManifests>
+    <namespaceManifestEntry manifest="bojinx-manifest.xml" namespace="http://www.rsnewmedia.co.uk/bojinx/"/>
+  </namespaceManifests>
+</flexLibProperties>

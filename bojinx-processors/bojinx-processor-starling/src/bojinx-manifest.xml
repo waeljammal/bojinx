@@ -1,0 +1,3 @@
+<?xml version="1.0"?><componentPackage>
+  <component id="StarlingDisplayObjectProcessor" class="com.bojinx.starling.StarlingDisplayObjectProcessor"/>
+</componentPackage>

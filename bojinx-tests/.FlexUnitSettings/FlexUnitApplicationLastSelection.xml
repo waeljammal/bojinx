@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testrun name="" >
+<testsuite  name="Default Test Suite" project="bojinx-tests">
+<testsuite name="com.bojinx.tests.suites:CommandSuite" type="testsuiteclass"/>
+<testsuite name="com.bojinx.tests.suites:InjectionSuite" type="testsuiteclass"/>
+<testsuite name="com.bojinx.tests.suites:MessageSuite" type="testsuiteclass"/>
+<testsuite name="com.bojinx.tests.suites:TasksSuite" type="testsuiteclass"/>
+</testsuite>
+<portNumber value="8765" />
+</testrun>
